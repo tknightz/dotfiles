@@ -1,14 +1,22 @@
 # You can edit this file by hand, but it's recommended not to do that.
 
 # Marks:
+'H
+	/home/tulen/
+	..
+1588248527
 'b
 	/home/tulen/bin/
 	..
-1585730295
+1588248527
 'h
 	/home/tulen/
 	..
-1585730295
+1588248527
+'z
+	/home/tulen/.config/vifm
+	..
+1588248527
 
 # Bookmarks:
 
@@ -22,62 +30,45 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/tulen/Downloads/KTDH
-	ktdh
-1
-d/home/tulen/Downloads/KTDH/ktdh
-	KTDH
-1
-d/home/tulen/Downloads/KTDH/ktdh/KTDH
-	..
-0
-d/home/tulen/Downloads/KTDH/ktdh
-	KTDH
-1
-d/home/tulen/Downloads/KTDH
-	ktdh
-1
-d/home/tulen/Downloads
+d/home/tulen
+	Documents
+2
+d/home/tulen/Documents
 	..
 0
 d/home/tulen
-	Pictures
-5
-d/home/tulen/Pictures
-	..
-0
+	Documents
+2
+d/home
+	tulen
+1
 d/home/tulen
-	Templates
-7
-d/home/tulen/Templates
-	..
-0
-d/home/tulen
-	Downloads
-3
-d/home/tulen/Downloads
-	Images
-6
-d/home/tulen/Downloads/Images
-	Image - Mas +Hsw [✔].gif
-6
-d/home/tulen/Downloads
-	Photos
-11
-d/home/tulen/Downloads/Photos
-	HaVanTuyen.jpg
+	Documents
+2
+d/home/tulen/Documents
+	Code
+1
+d/home/tulen/Documents/Code
+	Python
+1
+d/home/tulen/Documents/Code/Python
+	test.py
+1
+d/home/tulen/Documents/Code
+	Python
+1
+d/home/tulen/Documents/Code/Python
+	test.py
 1
 d
 
 # Right window history (oldest to newest):
-D/home/tulen/Downloads/KTDH
+D/home/tulen
 	..
 0
 D
 
 # Command line history (oldest to newest):
-:colorscheme gruvbox
-:w
 :q
 
 # Search history (oldest to newest):

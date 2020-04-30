@@ -4,9 +4,9 @@ TEST=`cat /etc/os-release | grep arch`
 
 if [ $TEST ]
 then 
-	sudo pacman -S git vim vifm neovim tmux zsh -y
+	sudo pacman -S git vim vifm neovim tmux zsh ibus -y
 else
-	sudo apt install git vim vifm neovim tmux zsh -y
+	sudo apt install git vim vifm neovim tmux zsh ibus -y
 fi
 
 
@@ -36,7 +36,10 @@ fc-cache -f -v
 cp -r ./.config/ ~/.config
 cp .zshrc .vimrc ~
 
-sudo echo options iwlwifi bt_coex_active=0 swcrypto=1 11n_disable=8 >> /etc/modprobe.d/iwlwifi.conf 
+echo options iwlwifi bt_coex_active=0 swcrypto=1 11n_disable=8 >> /etc/modprobe.d/iwlwifi.conf 
+
+gsettings set org.freedesktop.ibus.panel xkb-icon-rgba '#FFFFFF'
+
 
 # Install zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

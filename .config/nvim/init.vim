@@ -75,7 +75,7 @@ filetype plugin indent on    " required
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
-  colo gruvbox
+  colo xcodedark
   syntax on
 endif
 
@@ -135,6 +135,8 @@ nmap <S-f> :Files ~/Documents/Code<CR>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>g :GFiles<CR>
 
+
+nmap <Leader>h :nohls<CR>
 " jk for escape
 imap jk <ESC>
 
@@ -192,7 +194,7 @@ set ignorecase		" Do case insensitive matching
 set relativenumber
 set t_Co=256
 
-
+set hidden
 
 if filereadable("/home/tulen/.config/nvim/float_term_config.vim")
     source /home/tulen/.config/nvim/float_term_config.vim
