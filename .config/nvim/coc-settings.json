@@ -1,0 +1,8 @@
+{
+	"codeLens.enable": true,
+	"diagnostic.errorSign": " ",
+  	"diagnostic.warningSign": " ",
+  	"diagnostic.infoSign": "",
+	"python.jediEnabled": false,
+	"coc.source.file.ignoreHidden": false
+}
