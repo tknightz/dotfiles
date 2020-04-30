@@ -198,6 +198,10 @@ if filereadable("/home/tulen/.config/nvim/float_term_config.vim")
     source /home/tulen/.config/nvim/float_term_config.vim
 endif
 
+if filereadable("/home/tulen/.config/nvim/cocnvim_config.vim")
+    source /home/tulen/.config/nvim/cocnvim_config.vim
+endif
+
 " -------------------- Sources Ground ---------------------
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
