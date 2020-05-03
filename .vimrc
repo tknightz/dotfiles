@@ -75,7 +75,7 @@ filetype plugin indent on    " required
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
-  colo gruvbox
+  colo xcodedark
   syntax on
 endif
 
@@ -125,9 +125,6 @@ vnoremap <C-p> "+gP
 " Ctrl + n to toggle NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Space + f Fix error with YcmCompleter 
-map <space>f :YcmCompleter FixIt<CR>
-
 " Fuzzy Files config map
 " f : FZF finds files at your current dir
 nmap f :Files .<CR>
@@ -166,7 +163,7 @@ let g:mapleader=','
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 
-
+" let $FZF_DEFAULT_COMMAND = 'rg --hidden --files ""'
 
 
 

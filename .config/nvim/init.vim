@@ -195,6 +195,9 @@ set relativenumber
 set t_Co=256
 
 set hidden
+if has("xclip")
+    set clipboard=unnamedplus
+endif
 
 if filereadable("/home/tulen/.config/nvim/float_term_config.vim")
     source /home/tulen/.config/nvim/float_term_config.vim

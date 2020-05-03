@@ -4,9 +4,9 @@ TEST=`cat /etc/os-release | grep arch`
 
 if [ $TEST ]
 then 
-	sudo pacman -S git vim vifm neovim tmux zsh ibus -y
+	sudo pacman -S git vim vifm neovim tmux zsh ibus xclip -y
 else
-	sudo apt install git vim vifm neovim tmux zsh ibus -y
+	sudo apt install git vim vifm neovim tmux zsh ibus xclip -y
 fi
 
 
@@ -18,12 +18,10 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Install Vim-plug
 # For Nvim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # For Vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 mkdir ~/.config
 mkdir ~/.config/nvim
