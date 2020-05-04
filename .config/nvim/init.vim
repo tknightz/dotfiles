@@ -75,7 +75,7 @@ filetype plugin indent on    " required
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
-  colo xcodedark
+  colo dracula
   syntax on
 endif
 
@@ -192,9 +192,23 @@ set number
 :set hlsearch
 set ignorecase		" Do case insensitive matching
 set relativenumber
+set foldmethod=indent
 set t_Co=256
 
 set hidden
+
+function! ToggleFold()
+    try
+        :norm zA 
+    catch
+        echo 'Cannot toggle fold!'
+    endtry
+endfunction
+
+" nmap <Tab> :call ToggleFold()<CR>
+nmap <Tab> :call ToggleFold()<CR>
+
+
 if has("xclip")
     set clipboard=unnamedplus
 endif
