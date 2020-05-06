@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/tulen/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND='rg --hidden --files'
 export BAT_THEME="OneHalfDark"
 # Set name of the theme to load --- if set to "random", it will
