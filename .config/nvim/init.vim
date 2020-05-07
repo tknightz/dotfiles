@@ -111,7 +111,7 @@ endif
 
 
 " ------------------------- Mapping Ground ----------------------------------
-
+let mapleader = ','
 
 
 " Ctrl + y Copying whole file into clipboard

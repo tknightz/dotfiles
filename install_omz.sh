@@ -111,18 +111,24 @@ setup_zshrc() {
 	# destroy a user's original zshrc
 	echo "${BLUE}Setup zshrc config..${RESET}"
     # Install zsh syntax highlight)
-	echo "${BLUE}Install zsh-syntax-highlight...${RESET}"
+
+    echo "${BLUE}Install zsh-syntax-highlight...${RESET}"
+
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
     # Install zsh autosuggestion)
+
 	echo "${BLUE}Install zsh-autosuggestion...${RESET}"
+
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
     # Install powerlevel9k
 	echo "${BLUE}Install powerlevel9k...${RESET}"
+
     git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 	echo "${BLUE}Copying zshrc config file...${RESET}"
+
     cp ./.zshrc ~
     
 	echo "${GREEN}Done setup zshrc!${RESET}"
