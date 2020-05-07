@@ -4,9 +4,9 @@ TEST=`cat /etc/os-release | grep arch`
 
 if [ $TEST ]
 then 
-	sudo pacman -S git vim vifm neovim tmux zsh ibus xclip -y
+	sudo pacman -S git vim vifm neovim tmux zsh ibus xclip bat ripgrep -y
 else
-	sudo apt install git vim vifm neovim tmux zsh ibus xclip -y
+	sudo apt install git vim vifm neovim tmux zsh ibus xclip bat ripgrep -y
 fi
 
 # Install Vim-plug
@@ -18,26 +18,17 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 mkdir ~/.fonts
 
-cp ./Fonts/*.tff ~/.fonts
+cp ./Fonts/*.ttf ~/.fonts
 fc-cache -f -v
-cp -r ./.config/ ~/.config
-cp .zshrc .vimrc ~
+cp -r ./.config/* ~/.config
+cp .vimrc ~
 
 sudo echo options iwlwifi bt_coex_active=0 swcrypto=1 11n_disable=8 >> /etc/modprobe.d/iwlwifi.conf 
 
 gsettings set org.freedesktop.ibus.panel xkb-icon-rgba '#FFFFFF'
 
 
-# Install oh-my-zsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Install zsh syntax highlight)
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# Install zsh autosuggestion)
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# Install powerlevel9k
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-
+# Install and config oh-my-zsh
+chmod +x install_omz.sh
+sh ./install_omz.sh
 

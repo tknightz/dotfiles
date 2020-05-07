@@ -213,12 +213,12 @@ if has("xclip")
     set clipboard=unnamedplus
 endif
 
-if filereadable("/home/tulen/.config/nvim/float_term_config.vim")
-    source /home/tulen/.config/nvim/float_term_config.vim
+if filereadable("~/.config/nvim/float_term_config.vim")
+    source ~/.config/nvim/float_term_config.vim
 endif
 
-if filereadable("/home/tulen/.config/nvim/cocnvim_config.vim")
-    source /home/tulen/.config/nvim/cocnvim_config.vim
+if filereadable("~/.config/nvim/cocnvim_config.vim")
+    source ~/.config/nvim/cocnvim_config.vim
 endif
 
 " -------------------- Sources Ground ---------------------
