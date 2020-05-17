@@ -116,6 +116,7 @@ endif
 " ------------------------- Mapping Ground ----------------------------------
 let mapleader = ','
 
+
 " Ctrl + y Copying whole file into clipboard
 nnoremap <C-y> gg"+yG
 " Ctrl + y  Copying lines selected in visual mode
@@ -192,6 +193,9 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall 
 let g:user_emmet_leader_key=','
 
+let g:user_emmet_expandabbr_key='<Tab>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Confing vim markdown preview
 let g:instant_markdown_browser = "google-chrome-stable"
