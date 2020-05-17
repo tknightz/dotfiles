@@ -18,6 +18,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+
 Plug 'tpope/vim-speeddating'
 Plug 'mattn/emmet-vim'
 
@@ -26,7 +28,7 @@ Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'morhetz/gruvbox'
 Plug 'arzg/vim-colors-xcode'
-Plug 'dracula/vim'
+Plug 'dracula/vim',{'as':'dracula'}
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim'
@@ -75,6 +77,7 @@ filetype plugin indent on    " required
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
+  set termguicolors
   colo dracula
   syntax on
 endif
@@ -113,7 +116,6 @@ endif
 " ------------------------- Mapping Ground ----------------------------------
 let mapleader = ','
 
-
 " Ctrl + y Copying whole file into clipboard
 nnoremap <C-y> gg"+yG
 " Ctrl + y  Copying lines selected in visual mode
@@ -124,6 +126,7 @@ vnoremap <C-p> "+gP
 
 " Ctrl + n to toggle NerdTree
 map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Fuzzy Files config map
 " f : FZF finds files at your current dir
@@ -143,6 +146,17 @@ imap jk <ESC>
 " Mapping with split
 :nnoremap <Space>w <C-w>
 
+
+noremap <silent> <C-Left> :vertical resize +3<CR>
+noremap <silent> <C-Right> :vertical resize -3<CR>
+noremap <silent> <C-Up> :resize +3<CR>
+noremap <silent> <C-Down> :resize -3<CR>
+
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
+
+
+
 :nnoremap <Space>tn :tabnew<CR>
 :nnoremap <Space>bd :bd<CR>
 :nnoremap <Space>1 1gt
@@ -155,7 +169,7 @@ imap jk <ESC>
 " Config airline variables (powerline 100% vimscript)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='violet'
@@ -172,8 +186,15 @@ let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 
 " let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
+" Config emmet
+let g:user_emmet_mode='iv'
+let g:user_emmet_install_global=0
+autocmd FileType html,css EmmetInstall 
+let g:user_emmet_leader_key=','
 
 
+" Confing vim markdown preview
+let g:instant_markdown_browser = "google-chrome-stable"
 
 " -------------------- Setting Ground ---------------------
 
@@ -199,7 +220,7 @@ set hidden
 
 function! ToggleFold()
     try
-        :norm zA 
+        :norm za 
     catch
         echo 'Cannot toggle fold!'
     endtry
@@ -213,12 +234,12 @@ if has("xclip")
     set clipboard=unnamedplus
 endif
 
-if filereadable("~/.config/nvim/float_term_config.vim")
-    source ~/.config/nvim/float_term_config.vim
+if filereadable("/home/tknightz/.config/nvim/float_term_config.vim")
+    source /home/tknightz/.config/nvim/float_term_config.vim
 endif
 
-if filereadable("~/.config/nvim/cocnvim_config.vim")
-    source ~/.config/nvim/cocnvim_config.vim
+if filereadable("/home/tknightz/.config/nvim/cocnvim_config.vim")
+    source /home/tknightz/.config/nvim/cocnvim_config.vim
 endif
 
 " -------------------- Sources Ground ---------------------
