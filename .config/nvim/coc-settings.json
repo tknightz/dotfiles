@@ -1,8 +1,11 @@
 {
-	"codeLens.enable": true,
 	"diagnostic.errorSign": " ",
   	"diagnostic.warningSign": " ",
   	"diagnostic.infoSign": "",
-	"python.jediEnabled": false,
-	"coc.source.file.ignoreHidden": false
+    "diagnostic.refreshOnInsertMode": true,
+    "python.linting.pylintEnabled": false,
+    "python.jediEnabled": true,
+    "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
+	"coc.source.file.ignoreHidden": false,
+    "disableWorkspaceFolders": true
 }
