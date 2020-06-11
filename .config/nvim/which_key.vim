@@ -6,8 +6,8 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 
 
 " Map leader to which_key
-nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+" nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
+" vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
 " Hide status line
 " autocmd! FileType which_key
@@ -86,15 +86,17 @@ let g:which_key_map.c = {
 
 let g:which_key_map.g = {
     \ 'name' : '+git',
-    \ 'd'       : [':Git diff'              , 'diff'],
-    \ 'm'       : [':Git mergetool'         , 'merge'],
-    \ 'g'       : [':Ggrep'                 , 'grep'],
-    \ 'D'       : [':GDelete'               , 'delete'],
-    \ 'r'       : [':Gread'                 , 'read'],
-    \ 'c'       : [':Git commit'            , 'commit'],
-    \ 'l'       : [':Git log'               , 'log'],
-    \ 'p'       : [':Gpush'                 , 'push'],
-    \ 'P'       : [':Gpull'                 , 'pull'],
+    \ 'd'       : [':Git diff'                              , 'diff'],
+    \ 's'       : [':Gstatus'                               , 'status'],
+    \ 'm'       : [':Git mergetool'                         , 'merge'],
+    \ 'g'       : [':Ggrep'                                 , 'grep'],
+    \ 'D'       : [':GDelete'                               , 'delete'],
+    \ 'r'       : [':Gread'                                 , 'read'],
+    \ 'c'       : [':Git commit -a'                         , 'commit'],
+    \ 'l'       : [':Git log'                               , 'log'],
+    \ 'w'       : [':Gwrite'                                , 'write-add'],
+    \ 'p'       : [':Git --no-pager push'                   , 'push'],
+    \ 'P'       : [':Git --no-pager fetch'                  , 'pull'],
     \}
 
 let g:which_key_map.p = {
