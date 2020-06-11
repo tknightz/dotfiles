@@ -9,14 +9,10 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'tpope/vim-fugitive'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'ryanoasis/vim-devicons'
-
-Plug 'liuchengxu/vim-which-key'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
@@ -120,6 +116,7 @@ endif
 " ------------------------- Mapping Ground ----------------------------------
 let mapleader = ','
 
+
 " Ctrl + y Copying whole file into clipboard
 nnoremap <C-y> gg"+yG
 " Ctrl + y  Copying lines selected in visual mode
@@ -134,21 +131,21 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Fuzzy Files config map
 " f : FZF finds files at your current dir
-" nmap <Space>f :Files ../<CR>
+nmap f :Files .<CR>
 " Shift + f : FZF finds files at home dir
-" nmap <Space>F :Files ~/Documents/Code<CR> 
+nmap <S-f> :Files ~/Documents/Code<CR> 
 
 " Leader + r for rg, Leader + g for git
-" nmap <Leader>r :Rg<CR>
+nmap <Leader>r :Rg<CR>
 nmap <Leader>g :GFiles<CR>
-nmap <Leader>b :Buffers<CR>
+
 
 nmap <Leader>h :nohls<CR>
 " jk for escape
-" imap jk <ESC>
+imap jk <ESC>
 
 " Mapping with split
-" :nnoremap <Space>w <C-w>
+:nnoremap <Space>w <C-w>
 
 
 noremap <silent> <C-Left> :vertical resize +3<CR>
@@ -161,11 +158,11 @@ map <Leader>tk <C-w>t<C-w>K
 
 
 
-" :nnoremap <Space>tn :tabnew<CR>
-" :nnoremap <Space>bd :bd<CR>
-" :nnoremap <Space>1 1gt
-" :nnoremap <Space>2 2gt
-" :nnoremap <Space>3 3gt
+:nnoremap <Space>tn :tabnew<CR>
+:nnoremap <Space>bd :bd<CR>
+:nnoremap <Space>1 1gt
+:nnoremap <Space>2 2gt
+:nnoremap <Space>3 3gt
 
 
 "  --------------------------- Variables Ground ------------------------
@@ -175,7 +172,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='violet'
 
@@ -189,8 +185,6 @@ let g:fzf_preview_window = 'right:60%'
 let g:mapleader=','
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
-
-nmap <Leader>tm :TableModeToggle<CR>
 
 " let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
 " Config emmet
@@ -220,17 +214,13 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set number
-set hlsearch
+:set hlsearch
 set ignorecase		" Do case insensitive matching
 set relativenumber
 set foldmethod=indent
 set t_Co=256
-set mouse=a
 
 set hidden
-
-:filetype indent on
-:set smartindent
 
 function! ToggleFold()
     try
@@ -241,8 +231,7 @@ function! ToggleFold()
 endfunction
 
 " nmap <Tab> :call ToggleFold()<CR>
-nmap <silent> <Tab> :call ToggleFold()<CR>
-
+nmap <Tab> :call ToggleFold()<CR>
 
 
 if has("xclip")
@@ -257,9 +246,6 @@ if filereadable($HOME . "/.config/nvim/cocnvim_config.vim")
     source $HOME/.config/nvim/cocnvim_config.vim
 endif
 
-if filereadable($HOME . "/.config/nvim/which_key.vim")
-    source $HOME/.config/nvim/which_key.vim
-endif
 " -------------------- Sources Ground ---------------------
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
