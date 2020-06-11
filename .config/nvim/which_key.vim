@@ -74,14 +74,14 @@ let g:which_key_map.f = {
 
 let g:which_key_map.c = {
       \ 'name' : '+cocnvim' ,
-      \ 'a' : [':<C-u>CocList diagnostics'        , 'CocList diagnostics']       ,
-      \ 'e' : [':<C-u>CocList extensions'         , 'CocList extensions']        ,
-      \ 'c' : [':<C-u>CocList commands'           , 'CocList commands']          ,
-      \ 'o' : [':<C-u>CocList outline'            , 'CocList outline']    ,
-      \ 's' : [':<C-u>CocList -I symbols'         , 'CocList -I symbols']     ,
-      \ 'j' : [':<C-u>CocNext'                    , 'CocNext']     ,
-      \ 'k' : [':<C-u>CocPrev'                    , 'CocPrev']     ,
-      \ 'p' : [':<C-u>CocListResume'              , 'CocListResume'] ,
+      \ 'd' : [':CocList diagnostics'        , 'diagnostics']       ,
+      \ 'e' : [':CocList extensions'         , 'extensions']        ,
+      \ 'c' : [':CocList commands'           , 'commands']          ,
+      \ 'o' : [':CocList outline'            , 'outline']    ,
+      \ 's' : [':CocList -I symbols'         , 'symbols']     ,
+      \ 'j' : [':CocNext'                    , 'next']     ,
+      \ 'k' : [':CocPrev'                    , 'prev']     ,
+      \ 'p' : [':CocListResume'              , 'resume'] ,
       \ }
 
 let g:which_key_map.g = {
@@ -119,19 +119,23 @@ let g:which_key_map.r = [':Rg'      , 'grep-search']
 
 let g:which_key_map.s = {
     \ 'name'    : '+setting',
-    \ 'v'       : [':e ~/.vimrc'                         , 'edit-vimrc' ],
-    \ 'n'       : [':e ~/.config/nvim/init.vim'          , 'edit-init.vim' ],
-    \ 'w'       : [':e ~/.config/nvim/which_key.vim'     , 'edit-which_key' ],
-    \ 'c'       : [':e ~/.config/nvim/cocnvim_config.vim'     , 'edit-cocnvim' ],
+    \ 'v'       : [':e ~/.vimrc'                                 , 'vimrc' ],
+    \ 'i'       : [':e ~/.config/nvim/init.vim'                  , 'init.vim' ],
+    \ 'w'       : [':e ~/.config/nvim/which_key.vim'             , 'which_key' ],
+    \ 'c'       : [':e ~/.config/nvim/cocnvim_config.vim'        , 'cocnvim' ],
     \}
 
 let g:which_key_map.q = [':q'       , 'quit']
 
 let g:which_key_map.n = [':NERDTreeToggle'      , 'nerdtree']
 
+let g:which_key_map['?'] = [':help'        , 'help']
+
 let g:which_key_map.T = ['<S-t>'    , 'Terminal']
 
 let g:which_key_map.C = [':Commands'    , 'commands']
+
+let g:which_key_map.h = [':History'     , 'history-file']
 
 let g:which_key_map.H = [':History:'    , 'history-command']
 
