@@ -5,34 +5,29 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'tpope/vim-fugitive'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'liuchengxu/vim-which-key'
-
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-
-Plug 'tpope/vim-speeddating'
-Plug 'mattn/emmet-vim'
-
-Plug 'jceb/vim-orgmode'
-Plug 'dhruvasagar/vim-table-mode'
-
+" Theme and appearance
 Plug 'morhetz/gruvbox'
 Plug 'arzg/vim-colors-xcode'
 Plug 'dracula/vim',{'as':'dracula'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
+
+" Productivity
+Plug 'jceb/vim-orgmode'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
+Plug 'liuchengxu/vim-which-key'
+Plug 'dense-analysis/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'tpope/vim-speeddating'
+Plug 'mattn/emmet-vim'
+
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim'
@@ -185,11 +180,25 @@ let g:fzf_preview_line_highlight = '\x1b[101m'
 let g:fzf_preview_line_highlight = '\x1b[48;2;80;80;80m'
 let g:fzf_preview_window = 'right:60%'
 
+
+"Config ale linter
+let g:ale_linters = {
+    \ 'javascript': ['eslint'],
+    \ 'python'    : ['flake8']
+    \}
+
+let g:ale_enabled = 1
+let g:ale_lint_on_insert_leave = 1
+let g:ale_sign_error = ' ' 
+let g:ale_sign_warning = ' '
+let g:ale_echo_msg_format = '%s [%severity%]'
+let g:ale_set_quickfix = 1
+
+
 " Config table mode
 let g:mapleader=','
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
-
 nmap <Leader>tm :TableModeToggle<CR>
 
 " let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
@@ -200,8 +209,7 @@ autocmd FileType html,css EmmetInstall
 let g:user_emmet_leader_key=','
 
 let g:user_emmet_expandabbr_key='<Tab>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Confing vim markdown preview
 let g:instant_markdown_browser = "google-chrome-stable"
@@ -226,11 +234,24 @@ set relativenumber
 set foldmethod=indent
 set t_Co=256
 set mouse=a
+set updatetime=300
 
 set hidden
 
 :filetype indent on
 :set smartindent
+
+function! TabCompletation()
+    if(&ft=='html' || &ft=='css')
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+
+imap <expr> <Tab> TabCompletation() ? emmet#expandAbbrIntelligent("\<tab>") : pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+
 
 function! ToggleFold()
     try
