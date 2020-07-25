@@ -9,12 +9,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'arzg/vim-colors-xcode'
 Plug 'dracula/vim',{'as':'dracula'}
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 
 " Productivity
 Plug 'jceb/vim-orgmode'
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -27,6 +30,8 @@ Plug 'tpope/vim-surround'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-speeddating'
 Plug 'mattn/emmet-vim'
+"Plug 'metakirby5/codi.vim'
+Plug 'ChristianChiarulli/codi.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf' 
@@ -165,6 +170,28 @@ map <Leader>tk <C-w>t<C-w>K
 
 "  --------------------------- Variables Ground ------------------------
 
+let g:palenight_terminal_italics=1
+
+let g:javascript_plugin_jsdoc = 1
+
+let g:livepreview_previewer = 'open -a okular'
+let g:livepreview_engine = 'pdflatex'
+
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚ "
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ "
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒ "
+let g:javascript_conceal_noarg_arrow_function = "🞅 "
+let g:javascript_conceal_underscore_arrow_function = "🞅 "
+
+set conceallevel=1
+
 " Config airline variables (powerline 100% vimscript)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -172,7 +199,10 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
+" let g:airline_theme='violet'
 let g:airline_theme='violet'
+
+
 
 "Config fuzzy variables
 let g:fzf_preview_highlighter = "highlight -O xterm256 --line-number --style rdark --force"
@@ -183,16 +213,18 @@ let g:fzf_preview_window = 'right:60%'
 
 "Config ale linter
 let g:ale_linters = {
-    \ 'javascript': ['eslint'],
-    \ 'python'    : ['flake8']
-    \}
+  \ 'javascript': ['eslint'],
+  \ 'python'    : ['flake8']
+  \}
 
-let g:ale_enabled = 1
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 1
+let g:ale_python_flake8_options="--ignore=E501"
 let g:ale_sign_error = ' ' 
 let g:ale_sign_warning = ' '
-let g:ale_echo_msg_format = '%s [%severity%]'
-let g:ale_set_quickfix = 1
+let g:ale_echo_msg_error_str = '' 
+let g:ale_echo_msg_warning_str = ''
+let g:ale_echo_msg_format = '%severity% : %s'
 
 
 " Config table mode
@@ -233,7 +265,11 @@ set ignorecase		" Do case insensitive matching
 set relativenumber
 set foldmethod=indent
 set t_Co=256
-set mouse=a
+" set mouse=a
+
+highlight Normal guibg=none
+highlight NonText guibg=none
+
 set updatetime=300
 
 set hidden

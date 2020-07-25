@@ -1,0 +1,117 @@
+usage() {
+# `cat << EOF` This means that cat should stop reading when EOF is detected
+cat << EOF  
+Create a video from gif, audio and subtitles.
+Usage: ./makevideo --OPTIONS [value] 
+
+-h, -help,          --help                  Display help
+
+-A, -addsub,        --addsub                Add sub to video.
+
+-G, -gif2vid,       --gif2vid               Merge gif and audio into video.
+
+-f, -full,          --full                  Merge gif, audio and subtitles into video.
+
+-g, -gif,           --gif                   Set gif source file.
+
+-a, -audio,         --audio                 Set audio source file.
+
+-s, -sub,           --sub                   Set subtitles source file.
+
+-v, -video,         --video                 Set video source for adding sub.
+
+EOF
+# EOF is found above and hence cat command stops reading. This is equivalent to echo but much neater when printing out.
+}
+
+function gif2vid(){
+    time=$(ffmpeg -i "$2" 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//)
+    ffmpeg -loglevel quiet -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time out.mp4 
+}
+
+
+function addsub(){
+    ffmpeg -loglevel quiet -i "$1" -vf "subtitles="$2":force_style='FontSize=13,OutlineColour=&H80000000,BorderStyle=3,Outline=1,Shadow=0,MarginV=20'" -c:a copy sub.mp4
+}
+
+
+function makeVideoScript(){
+    time=$(ffmpeg -i "$2" 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//)
+    ffmpeg -loglevel quiet -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2,subtitles="$3":force_style='FontName=URW Gothic,FontSize=20,OutlineColour=&H80000000,Outline=1,Shadow=0,MarginV=20'" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time "${2%.*}".mp4 
+    echo 'Done'
+}
+
+options=$(getopt -l "gif:,audio:,sub:,video:,addsub,gif2vid,full,help" -o "g:a:s:v:AGfh" -a -- "$@")
+eval set -- "$options"
+
+gif_src=""
+audio_src=""
+sub_src=""
+video_src=""
+bool_addsub=0
+bool_gif2vid=0
+bool_full=0
+
+while true;
+do
+    case $1 in
+        -A|--addsub)
+            bool_addsub=1
+            ;;
+        -G|--gif2vid)
+            bool_gif2vid=1
+            ;;
+        -f|--full)
+            bool_full=1
+            ;;
+        -g|--gif)
+            shift
+            gif_src=$1
+            ;;
+        -a|--audio)
+            shift
+            audio_src=$1
+            ;;
+        -s|--sub)
+            shift
+            sub_src=$1
+            ;;
+        -v|--video)
+            shift
+            video_src=$1
+            ;;
+        -h|--help)
+            usage
+            ;;
+        --)
+            shift
+            break;;
+    esac
+    shift
+done
+
+if [[ ${bool_addsub} == 1 ]]
+then
+    if [[ ${video_src} == "" || ${sub_src} == "" ]]
+    then
+        echo "Need video and subtitles to finish task."
+    else
+        addsub $video_src $sub_src
+    fi
+elif [[ ${gif2vid} == 1 ]]
+then
+    if [[ ${gif_src} == "" || ${audio_src} == "" ]]
+    then
+        echo "Need gif and audio as input."
+    else
+        gif2vid $gif_src $audio_src
+    fi
+elif [[ ${bool_full} == 1 ]]
+then
+    if [[ ${gif_src} == "" || ${audio_src} == "" || ${sub_src} == "" ]]
+    then
+        echo "Need gif, audio and subtitles to make a video."
+    else
+        makeVideoScript $gif_src $audio_src $sub_src
+    fi
+fi

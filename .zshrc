@@ -3,15 +3,20 @@
 
 # Path to your oh-my-zsh installation.
 export TERM='xterm-256color'
-export ZSH="~/.oh-my-zsh"
+export ZSH="/home/tknightz/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND='rg --hidden --files'
 export BAT_THEME="OneHalfDark"
-export PATH=$PATH:$HOME/.config/vifm/scripts/
+export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
+
+if [[ `tty` =~ tty ]]; then
+    ZSH_THEME="avit"
+fi
 
 POWERLEVEL9K_MODE="nerdfont-complete"
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_beginning
@@ -21,7 +26,7 @@ POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_CUSTOM_OS_ICON="echo ♥ "
 POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND=red
-POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND=white
+POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND=255
 OWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=black
 POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND=red
 POWERLEVEL9K_SSH_BACKGROUND=white
@@ -55,10 +60,10 @@ POWERLEVEL9K_COMMAND_BACKGROUND_JOBS_FOREGROUND=115
 POWERLEVEL9K_TIME_ICON=
 POWERLEVEL9K_TIME_FORMAT='%D{%I:%M}'
 POWERLEVEL9K_TIME_BACKGROUND=cyan
-POWERLEVEL9K_TIME_FOREGROUND=053
+POWERLEVEL9K_TIME_FOREGROUND=black
 POWERLEVEL9K_RAM_ICON=
 POWERLEVEL9K_RAM_FOREGROUND=black
-POWERLEVEL9K_RAM_BACKGROUND=yellow
+POWERLEVEL9K_RAM_BACKGROUND=013
 POWERLEVEL9K_VI_MODE_FOREGROUND=black
 POWERLEVEL9K_VI_COMMAND_MODE_STRING=NORMAL
 POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND=green
@@ -146,6 +151,27 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 alias vifm=vifmrun
+
+function runc(){
+    gcc $1 -o ${1%.*} && ./${1%.*}
+}
+
+alias runc=runc
+
+function makeVideo(){
+    time=$(ffmpeg -i "$2" 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//)
+    ffmpeg -loglevel quiet -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2,subtitles="$3":force_style='FontName=Cascadia Code,FontSize=13,OutlineColour=&H80000000,BorderStyle=3,Outline=1,Shadow=0,MarginV=20'" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time "${2%.*}".mp4 
+    echo 'Done'
+}
+
+alias makeVideo=makeVideo
+
+function gif2vid(){
+    time=$(ffmpeg -i "$2" 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//)
+    ffmpeg -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time out.mp4 
+}
+
+alias gif2vid=gif2vid
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
