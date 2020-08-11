@@ -158,21 +158,6 @@ function runc(){
 
 alias runc=runc
 
-function makeVideo(){
-    time=$(ffmpeg -i "$2" 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//)
-    ffmpeg -loglevel quiet -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2,subtitles="$3":force_style='FontName=Cascadia Code,FontSize=13,OutlineColour=&H80000000,BorderStyle=3,Outline=1,Shadow=0,MarginV=20'" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time "${2%.*}".mp4 
-    echo 'Done'
-}
-
-alias makeVideo=makeVideo
-
-function gif2vid(){
-    time=$(ffmpeg -i "$2" 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//)
-    ffmpeg -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time out.mp4 
-}
-
-alias gif2vid=gif2vid
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

@@ -178,15 +178,15 @@ let g:livepreview_previewer = 'open -a okular'
 let g:livepreview_engine = 'pdflatex'
 
 let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
+" let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚ "
-let g:javascript_conceal_undefined            = "¿"
+" let g:javascript_conceal_return               = "⇚ "
+" let g:javascript_conceal_undefined            = "¿"
 let g:javascript_conceal_NaN                  = "ℕ "
-let g:javascript_conceal_prototype            = "¶"
+" let g:javascript_conceal_prototype            = "¶"
 let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒ "
+" let g:javascript_conceal_arrow_function       = "⇒ "
 let g:javascript_conceal_noarg_arrow_function = "🞅 "
 let g:javascript_conceal_underscore_arrow_function = "🞅 "
 
@@ -200,7 +200,7 @@ let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='violet'
-let g:airline_theme='violet'
+let g:airline_theme='xcodedark'
 
 
 
@@ -222,8 +222,8 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_python_flake8_options="--ignore=E501"
 let g:ale_sign_error = ' ' 
 let g:ale_sign_warning = ' '
-let g:ale_echo_msg_error_str = '' 
-let g:ale_echo_msg_warning_str = ''
+let g:ale_echo_msg_error_str = ' ' 
+let g:ale_echo_msg_warning_str = ' '
 let g:ale_echo_msg_format = '%severity% : %s'
 
 
@@ -244,7 +244,9 @@ let g:user_emmet_expandabbr_key='<Tab>'
 " autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Confing vim markdown preview
-let g:instant_markdown_browser = "google-chrome-stable"
+
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_browser = "brave"
 
 " -------------------- Setting Ground ---------------------
 
