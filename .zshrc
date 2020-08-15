@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export TERM='xterm-256color'
-export ZSH="/home/tknightz/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND='rg --hidden --files'
 export BAT_THEME="OneHalfDark"
 export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin

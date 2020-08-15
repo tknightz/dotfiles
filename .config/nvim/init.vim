@@ -17,20 +17,18 @@ Plug 'ryanoasis/vim-devicons'
 
 " Productivity
 Plug 'jceb/vim-orgmode'
-Plug 'xuhdev/vim-latex-live-preview'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key'
-Plug 'dense-analysis/ale'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-speeddating'
 Plug 'mattn/emmet-vim'
-"Plug 'metakirby5/codi.vim'
 Plug 'ChristianChiarulli/codi.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
@@ -174,9 +172,6 @@ let g:palenight_terminal_italics=1
 
 let g:javascript_plugin_jsdoc = 1
 
-let g:livepreview_previewer = 'open -a okular'
-let g:livepreview_engine = 'pdflatex'
-
 let g:javascript_conceal_function             = "ƒ"
 " let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
@@ -209,22 +204,6 @@ let g:fzf_preview_highlighter = "highlight -O xterm256 --line-number --style rda
 let g:fzf_preview_line_highlight = '\x1b[101m'
 let g:fzf_preview_line_highlight = '\x1b[48;2;80;80;80m'
 let g:fzf_preview_window = 'right:60%'
-
-
-"Config ale linter
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'python'    : ['flake8']
-  \}
-
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_insert_leave = 1
-let g:ale_python_flake8_options="--ignore=E501"
-let g:ale_sign_error = ' ' 
-let g:ale_sign_warning = ' '
-let g:ale_echo_msg_error_str = ' ' 
-let g:ale_echo_msg_warning_str = ' '
-let g:ale_echo_msg_format = '%severity% : %s'
 
 
 " Config table mode
