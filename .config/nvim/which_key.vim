@@ -44,19 +44,18 @@ let g:which_key_map.w = {
 
 let g:which_key_map.t = {
     \ 'name' : '+tab',
-    \ 'n' : [':tabnew'          , 'Create a new tab']   ,
-    \ '1' : ['1gt'              , 'Go to tab 1']        ,
-    \ '2' : ['2gt'              , 'Go to tab 2']        ,
-    \ '3' : ['3gt'              , 'Go to tab 3']        ,
-    \ '4' : ['4gt'              , 'Go to tab 4']        ,
-    \ 'x' : [':tabclose'        , 'Close tab.']         ,
+    \ 'n' : [':tabnew'                          , 'Create a new tab']   ,
+    \ '1' : ['1gt'                              , 'Go to tab 1']        ,
+    \ '2' : ['2gt'                              , 'Go to tab 2']        ,
+    \ '3' : ['3gt'                              , 'Go to tab 3']        ,
+    \ '4' : ['4gt'                              , 'Go to tab 4']        ,
+    \ 'x' : [':tabclose'                        , 'Close tab.']         ,
+    \ 't' : [':call tablemode#Toggle'           , 'TableModeToggle']         ,
     \ }
 
 let g:which_key_map.b = {
       \ 'name' : '+buffer' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
+      \ 'd' : [':bd'       , 'delete-buffer']   ,
       \ 'f' : ['bfirst'    , 'first-buffer']    ,
       \ 'h' : ['Startify'  , 'home-buffer']     ,
       \ 'l' : ['blast'     , 'last-buffer']     ,
@@ -86,17 +85,18 @@ let g:which_key_map.c = {
 
 let g:which_key_map.g = {
     \ 'name' : '+git',
-    \ 'd'       : [':Git diff'                              , 'diff'],
-    \ 's'       : [':Gstatus'                               , 'status'],
-    \ 'm'       : [':Git mergetool'                         , 'merge'],
-    \ 'g'       : [':Ggrep'                                 , 'grep'],
-    \ 'D'       : [':GDelete'                               , 'delete'],
-    \ 'r'       : [':Gread'                                 , 'read'],
-    \ 'c'       : [':Git commit -a'                         , 'commit'],
-    \ 'l'       : [':Git log'                               , 'log'],
-    \ 'w'       : [':Gwrite'                                , 'write-add'],
-    \ 'p'       : [':Git --no-pager push'                   , 'push'],
-    \ 'P'       : [':Git --no-pager fetch'                  , 'pull'],
+    \ 'd'       : [':Git diff'                                  , 'diff'],
+    \ 's'       : [':Gstatus'                                   , 'status'],
+    \ 'm'       : [':Git mergetool'                             , 'merge'],
+    \ 'g'       : [':Ggrep'                                     , 'grep'],
+    \ 'D'       : [':GDelete'                                   , 'delete'],
+    \ 'r'       : [':Gread'                                     , 'read'],
+    \ 'c'       : [':Git commit -a'                             , 'commit'],
+    \ 'l'       : [':Git log'                                   , 'log'],
+    \ 'w'       : [':Gwrite'                                    , 'write-add'],
+    \ 'p'       : [':Git --no-pager push'                       , 'push'],
+    \ 'P'       : [':Git --no-pager fetch'                      , 'pull'],
+    \ 'L'       : [':FloatermNew lazygit'                       , 'lazygit'],
     \}
 
 let g:which_key_map.p = {

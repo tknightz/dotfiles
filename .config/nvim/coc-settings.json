@@ -3,9 +3,9 @@
   	"diagnostic.warningSign": " ",
   	"diagnostic.infoSign": "",
     "diagnostic.refreshOnInsertMode": true,
-    "python.linting.pylintEnabled": false,
+    "coc.preferences.diagnostic.refreshOnInsertMode": true,
+    "python.linting.flake8Enabled": true,
     "python.jediEnabled": true,
     "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
-	"coc.source.file.ignoreHidden": false,
-    "disableWorkspaceFolders": true
+	"coc.source.file.ignoreHidden": false
 }
