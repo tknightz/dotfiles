@@ -5,6 +5,7 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " On-demand loading
+
 " Theme and appearance
 Plug 'morhetz/gruvbox'
 Plug 'arzg/vim-colors-xcode'
@@ -24,10 +25,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm'
 Plug 'haya14busa/is.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
 
 " Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
@@ -121,6 +123,9 @@ endif
 
 " ------------------------- Mapping Ground ----------------------------------
 let mapleader = ','
+
+" Auto-pairs configuration
+
 
 " Ctrl + y Copying whole file into clipboard
 nnoremap <C-y> gg"+yG
@@ -268,6 +273,7 @@ set relativenumber
 set foldmethod=indent
 set foldlevel=99
 set t_Co=256
+set shortmess=at
 " set mouse=a
 
 highlight Normal guibg=none
@@ -277,8 +283,7 @@ set updatetime=300
 
 set hidden
 
-:filetype indent on
-:set smartindent
+set smartindent
 
 function! TabCompletation()
     if(&ft=='html' || &ft=='css')
@@ -287,6 +292,30 @@ function! TabCompletation()
         return 0
     endif
 endfunction
+
+function! IBusOff()
+  " Lưu engine hiện tại
+  let g:ibus_prev_engine = system('ibus engine')
+  " Chuyển sang engine tiếng Anh
+  execute 'silent !ibus engine xkb:us::eng'
+endfunction
+function! IBusOn()
+  let l:current_engine = system('ibus engine')
+  " nếu engine được set trong normal mode thì
+  " lúc vào insert mode duùn luôn engine đó
+  if l:current_engine !~? 'xkb:us::eng'
+    let g:ibus_prev_engine = l:current_engine
+  endif
+  " Khôi phục lại engine
+  execute 'silent !' . 'ibus engine ' . g:ibus_prev_engine
+endfunction
+augroup IBusHandler
+    autocmd CmdLineEnter [/?] call IBusOn()
+    autocmd CmdLineLeave [/?] call IBusOff()
+    autocmd InsertEnter * call IBusOn()
+    autocmd InsertLeave * call IBusOff()
+augroup END
+call IBusOff()
 
 " imap <expr> <Tab> TabCompletation() ? emmet#expandAbbrIntelligent("\<tab>") : pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 
