@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export TERM='xterm-256color'
 export ZSH="$HOME/.oh-my-zsh"
-export FZF_DEFAULT_COMMAND='rg --hidden --files'
+export FZF_DEFAULT_COMMAND="rg --hidden --files --follow -g '!{.git/*,node_modules/*}'"
 export BAT_THEME="OneHalfDark"
 export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
