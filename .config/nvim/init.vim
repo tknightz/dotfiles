@@ -23,6 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm'
+Plug 'haya14busa/is.vim'
 
 " Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
