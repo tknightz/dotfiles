@@ -9,12 +9,14 @@ call plug#begin('~/.vim/plugged')
 " Theme and appearance
 Plug 'morhetz/gruvbox'
 Plug 'arzg/vim-colors-xcode'
-Plug 'dracula/vim',{'as':'dracula'}
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
+Plug 'mhartington/oceanic-next'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'kjssad/quantum.vim'
+Plug 'pangloss/vim-javascript'
 
 " Productivity
 Plug 'jceb/vim-orgmode'
@@ -27,16 +29,16 @@ Plug 'voldikss/vim-floaterm'
 Plug 'haya14busa/is.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
-
-" Plug 'dense-analysis/ale'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-speeddating'
 Plug 'mattn/emmet-vim'
-"Plug 'metakirby5/codi.vim'
-Plug 'ChristianChiarulli/codi.vim'
+Plug 'qpkorr/vim-bufkill'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf' 
@@ -86,7 +88,7 @@ filetype plugin indent on    " required
 " line enables syntax highlighting by default.
 if has("syntax")
   set termguicolors
-  colo palenight
+  colo quantum
   syntax on
 endif
 
@@ -122,7 +124,7 @@ endif
 
 
 " ------------------------- Mapping Ground ----------------------------------
-let mapleader = ','
+let g:mapleader = ','
 
 " Auto-pairs configuration
 
@@ -137,7 +139,7 @@ vnoremap <C-p> "+gP
 
 " Ctrl + n to toggle NerdTree
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (bufnr("%") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Fuzzy Files config map
 " f : FZF finds files at your current dir
@@ -147,8 +149,8 @@ autocmd bufenter * if (bufnr("%") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Leader + r for rg, Leader + g for git
 " nmap <Leader>r :Rg<CR>
-nmap <Leader>g :GFiles<CR>
-nmap <Leader>b :Buffers<CR>
+
+nmap <Leader>f <Plug>(coc-format-selected)
 
 nmap <Leader>h :nohls<CR>
 " jk for escape
@@ -177,24 +179,13 @@ map <Leader>tk <C-w>t<C-w>K
 
 "  --------------------------- Variables Ground ------------------------
 
-let g:palenight_terminal_italics=1
-
 let g:javascript_plugin_jsdoc = 1
-
-let g:javascript_conceal_function             = "ƒ"
-" let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-" let g:javascript_conceal_return               = "⇚ "
-" let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ "
-" let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-" let g:javascript_conceal_arrow_function       = "⇒ "
-let g:javascript_conceal_noarg_arrow_function = "🞅 "
-let g:javascript_conceal_underscore_arrow_function = "🞅 "
-
 set conceallevel=1
+
+let g:palenight_terminal_italics=1
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+
 
 " Config airline variables (powerline 100% vimscript)
 let g:airline#extensions#tabline#enabled = 1
@@ -204,7 +195,7 @@ let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='violet'
-let g:airline_theme='xcodedark'
+let g:airline_theme='base16_snazzy'
 
 
 
@@ -214,23 +205,31 @@ let g:fzf_preview_line_highlight = '\x1b[101m'
 let g:fzf_preview_line_highlight = '\x1b[48;2;80;80;80m'
 let g:fzf_preview_window = 'right:60%'
 
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.5, 'yoffset': 1, 'border': 'horizontal' } }
+
 
 "Config lazygit
+command! -nargs=1 Prettier :silent CocCommand prettier.formatFile
 
-"Config ale linter
-" let g:ale_linters = {
-  " \ 'javascript': ['eslint'],
-  " \ 'python'    : ['flake8']
-  " \}
-" 
-" let g:ale_lint_on_enter = 1
-" let g:ale_lint_on_insert_leave = 1
-" let g:ale_python_flake8_options="--ignore=E501"
-" let g:ale_sign_error = ' ' 
-" let g:ale_sign_warning = ' '
-" let g:ale_echo_msg_error_str = ' ' 
-" let g:ale_echo_msg_warning_str = ' '
-" let g:ale_echo_msg_format = '%severity% : %s'
+" Config ale linter
+
+let g:ale_linters = {
+\ 'javascript': ['eslint', 'tsserver'],
+\}
+let g:ale_fixers = {
+\ 'javascript': ['eslint', 'prettier']
+\}
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_insert_leave = 1
+let g:ale_python_flake8_options="--ignore=E501"
+let g:ale_sign_error = ' ' 
+let g:ale_sign_warning = ' '
+let g:ale_echo_msg_error_str = ' ' 
+let g:ale_echo_msg_warning_str = ' '
+let g:ale_echo_msg_format = '%severity% : %s'
+
+let g:ale_fix_on_save = 1
+let g:ale_disable_lsp = 1
 
 
 " Config table mode
@@ -263,8 +262,9 @@ set path+=**
 " Setting tabs, highlight search some stuffs like that
 set encoding=UTF-8
 set background=dark
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set sw=2
+set cmdheight=1
 set expandtab
 set number
 set hlsearch
@@ -282,7 +282,7 @@ highlight NonText guibg=none
 set updatetime=300
 
 set hidden
-
+:set indentexpr=
 set smartindent
 
 function! TabCompletation()
@@ -293,29 +293,6 @@ function! TabCompletation()
     endif
 endfunction
 
-function! IBusOff()
-  " Lưu engine hiện tại
-  let g:ibus_prev_engine = system('ibus engine')
-  " Chuyển sang engine tiếng Anh
-  execute 'silent !ibus engine xkb:us::eng'
-endfunction
-function! IBusOn()
-  let l:current_engine = system('ibus engine')
-  " nếu engine được set trong normal mode thì
-  " lúc vào insert mode duùn luôn engine đó
-  if l:current_engine !~? 'xkb:us::eng'
-    let g:ibus_prev_engine = l:current_engine
-  endif
-  " Khôi phục lại engine
-  execute 'silent !' . 'ibus engine ' . g:ibus_prev_engine
-endfunction
-augroup IBusHandler
-    autocmd CmdLineEnter [/?] call IBusOn()
-    autocmd CmdLineLeave [/?] call IBusOff()
-    autocmd InsertEnter * call IBusOn()
-    autocmd InsertLeave * call IBusOff()
-augroup END
-call IBusOff()
 
 " imap <expr> <Tab> TabCompletation() ? emmet#expandAbbrIntelligent("\<tab>") : pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 

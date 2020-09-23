@@ -1,33 +1,29 @@
 QTabBar,
-QTabBar::tab
-{
-    font-family: "Noto Sans";
-    font-size: 11px;
-    /* height: 16px; */
-    padding: 3px;
-    border-bottom: 1px solid #aaff00;
-    background-color: #2222228f;
-    opacity: 0.7;
-    color: palette(text);
-
+QTabBar::tab {
+  font-family: 'Noto Sans';
+  font-size: 11px;
+  /* height: 16px; */
+  padding: 3px;
+  /* border-bottom: 1px solid #aaff00; */
+  background-color: black;
+  opacity: 0.7;
+  color: palette(text);
 }
 
-QTabBar::tab:hover
-{
-    /*text-decoration: underline;*/
-    color: orange;
+QTabBar::tab:hover {
+  /*text-decoration: underline;*/
+  color: orange;
 }
 
-QTabBar::tab:selected
-{
-    font-weight: bold;
-    color: #aaff00;
-    border: 0px;
-    border-top: 1px solid #aaff00;
-    border-left: 1px solid #aaff00;
-    border-right: 1px solid #aaff00;
-    border-bottom: none;
-    border-top-right-radius: 6px;
-    border-top-left-radius: 6px;
-    background: #222222c4;
+QTabBar::tab:selected {
+  font-weight: bold;
+  color: #aaff00;
+  border: 0px;
+  /* border-top: 1px solid #aaff00; */
+  /* border-left: 1px solid #aaff00; */
+  /* border-right: 1px solid #aaff00; */
+  border-bottom: none;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  background: #282a36;
 }

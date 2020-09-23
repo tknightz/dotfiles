@@ -75,20 +75,21 @@ let g:which_key_map.t.m = 'which_key_ignore'
 
 let g:which_key_map.b = {
       \ 'name' : 'buffer >>' ,
-      \ 'd' : [':bd'       , 'delete-buffer']   ,
+      \ 'd' : [':BD'       , 'delete-buffer']   ,
       \ 'f' : ['bfirst'    , 'first-buffer']    ,
       \ 'h' : ['Startify'  , 'home-buffer']     ,
       \ 'l' : ['blast'     , 'last-buffer']     ,
       \ 'n' : ['bnext'     , 'next-buffer']     ,
       \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
+      \ '/' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
 
 let g:which_key_map.f = {
       \ 'name' : 'file >>' ,
-      \ 'f' : [':Files .'                   , 'fzf-here']    ,
+      \ 'f' : [':Files .'                   , 'find files here']    ,
       \ 'F' : [':Files ~/Documents/Code'    , 'fzf-code-folder']    ,
       \ 's' : [':w'                         , 'save']    ,
+      \ 'g' : [':GFiles?'                   , 'git files changes']    ,
       \ }
 
 

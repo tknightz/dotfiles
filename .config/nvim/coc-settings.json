@@ -3,9 +3,18 @@
   	"diagnostic.warningSign": " ",
   	"diagnostic.infoSign": "",
     "diagnostic.refreshOnInsertMode": true,
-    "coc.preferences.diagnostic.refreshOnInsertMode": true,
     "python.linting.flake8Enabled": true,
     "python.jediEnabled": true,
     "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
-	"coc.source.file.ignoreHidden": false
+    "eslint.run": "onType",
+    "diagnostic.displayByAle": true,
+    "coc.source.file.ignoreHidden": false,
+    "eslint.options": {"configFile": "/home/tknightz/.eslintrc.json"},
+    "coc.preferences.messageLevel": "error",
+    "coc.preferences.formatOnInsertLeave": true,
+    "coc.preferences.formatOnSaveFiletypes": ["css", "html", "javascript", "typescript", "typescriptreact", "python"],
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "none",
+    "prettier.bracketSpacing": true,
+    "prettier.semi": false
 }
