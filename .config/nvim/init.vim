@@ -13,8 +13,6 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'mhartington/oceanic-next'
-Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'kjssad/quantum.vim'
 Plug 'pangloss/vim-javascript'
 
@@ -39,6 +37,8 @@ Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-speeddating'
 Plug 'mattn/emmet-vim'
 Plug 'qpkorr/vim-bufkill'
+Plug 'gko/vim-coloresque'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf' 
@@ -126,8 +126,9 @@ endif
 " ------------------------- Mapping Ground ----------------------------------
 let g:mapleader = ','
 
-" Auto-pairs configuration
-
+" Vim-javascript
+" let g:javascript_plugin_jsdoc = 1
+" set conceallevel=1
 
 " Ctrl + y Copying whole file into clipboard
 nnoremap <C-y> gg"+yG
@@ -179,8 +180,6 @@ map <Leader>tk <C-w>t<C-w>K
 
 "  --------------------------- Variables Ground ------------------------
 
-let g:javascript_plugin_jsdoc = 1
-set conceallevel=1
 
 let g:palenight_terminal_italics=1
 let g:oceanic_next_terminal_bold = 1
@@ -203,7 +202,7 @@ let g:airline_theme='base16_snazzy'
 let g:fzf_preview_highlighter = "highlight -O xterm256 --line-number --style rdark --force"
 let g:fzf_preview_line_highlight = '\x1b[101m'
 let g:fzf_preview_line_highlight = '\x1b[48;2;80;80;80m'
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = 'right:50%'
 
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.5, 'yoffset': 1, 'border': 'horizontal' } }
 
@@ -215,9 +214,11 @@ command! -nargs=1 Prettier :silent CocCommand prettier.formatFile
 
 let g:ale_linters = {
 \ 'javascript': ['eslint', 'tsserver'],
+\ 'python': ['pylint']
 \}
 let g:ale_fixers = {
-\ 'javascript': ['eslint', 'prettier']
+\ 'javascript': ['eslint', 'prettier'],
+\ 'python': ['autopep8']
 \}
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 1
@@ -276,7 +277,7 @@ set t_Co=256
 set shortmess=at
 " set mouse=a
 
-highlight Normal guibg=none
+highlight Normal guibg=none ctermbg=NONE
 highlight NonText guibg=none
 
 set updatetime=300

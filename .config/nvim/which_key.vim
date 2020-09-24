@@ -92,6 +92,13 @@ let g:which_key_map.f = {
       \ 'g' : [':GFiles?'                   , 'git files changes']    ,
       \ }
 
+let g:which_key_map.i = {
+      \ 'name' : 'issues >>' ,
+      \ 'n' : [':ALENext .'                 , 'next']    ,
+      \ 'p' : [':ALEPrevious .'             , 'previous']    ,
+      \ 'f' : [':ALEFix'                    , 'fix']    ,
+      \ 'i' : [':ALEImport'                 , 'import']    ,
+      \ }
 
 let g:which_key_map.c = {
       \ 'name' : 'cocnvim >>' ,

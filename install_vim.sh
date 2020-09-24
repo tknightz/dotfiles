@@ -30,7 +30,7 @@ then
 	sudo pacman -S git vim vifm neovim bat ripgrep -y
 else
     echo "${BLUE} Detected OS :${RESET} ${GREEN}Ubuntu${RESET}."
-	sudo apt install git vim vifm neovim ripgrep -y
+	sudo apt install git vim vifm neovim -y
 fi
 
 # Install Vim-plug

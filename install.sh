@@ -29,7 +29,9 @@ then
 	sudo pacman -S git vim vifm neovim tmux zsh ibus xclip bat ripgrep -y
 else
     echo "${BLUE} Detected OS :${RESET} ${GREEN}Ubuntu${RESET}."
-	sudo apt install git vim vifm neovim tmux zsh ibus xclip ripgrep -y
+	sudo apt install git vim vifm neovim tmux zsh ibus xclip -y
+  curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+  sudo apt install nodejs
 fi
 
 # Install Vim-plug
@@ -52,6 +54,7 @@ nvim -c 'PlugInstall' \
 echo "${BLUE}Installing Fonts...${RESET}"
 mkdir -p ~/.fonts
 cp ./Fonts/*.ttf ~/.fonts
+cp ./Fonts/*.otf ~/.fonts
 fc-cache -f -v
 
 
