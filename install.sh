@@ -26,12 +26,13 @@ TEST=`cat /etc/os-release | grep arch`
 if [ $TEST ]
 then 
     echo "${BLUE} Detected OS :${RESET} ${GREEN}Arch${RESET}."
-	sudo pacman -S git vim vifm neovim tmux zsh ibus xclip bat ripgrep -y
+    sudo pacman -S git vim vifm neovim tmux zsh ibus xclip bat ripgrep -y
 else
     echo "${BLUE} Detected OS :${RESET} ${GREEN}Ubuntu${RESET}."
-	sudo apt install git vim vifm neovim tmux zsh ibus xclip -y
-  curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-  sudo apt install nodejs
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt install git vim vifm neovim tmux zsh ibus xclip -y
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    sudo apt install nodejs
 fi
 
 # Install Vim-plug
@@ -60,7 +61,7 @@ fc-cache -f -v
 
 # sudo echo options iwlwifi bt_coex_active=0 swcrypto=1 11n_disable=8 >> /etc/modprobe.d/iwlwifi.conf 
 
-gsettings set org.freedesktop.ibus.panel xkb-icon-rgba '#FFFFFF'
+# gsettings set org.freedesktop.ibus.panel xkb-icon-rgba '#FFFFFF'
 
 
 # Install and config oh-my-zsh

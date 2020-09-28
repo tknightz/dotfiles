@@ -27,10 +27,11 @@ TEST=`cat /etc/os-release | grep arch`
 if [ $TEST ]
 then 
     echo "${BLUE} Detected OS :${RESET} ${GREEN}Arch${RESET}."
-	sudo pacman -S git vim vifm neovim bat ripgrep -y
+  	sudo pacman -S git vim vifm neovim bat ripgrep -y
 else
     echo "${BLUE} Detected OS :${RESET} ${GREEN}Ubuntu${RESET}."
-	sudo apt install git vim vifm neovim -y
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt install git vim vifm neovim -y
 fi
 
 # Install Vim-plug
