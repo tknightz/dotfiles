@@ -1,0 +1,5 @@
+test		/home/tknightz
+Test    /home/tknightz/Downloads/Apps/dotfiles
+abby		/home/tknightz/Documents/Jobs/abby-mobile-app/
+dotfiles		/home/tknightz/Downloads/Apps/dotfiles/
+4handy-work		/home/tknightz/Documents/Jobs/4handy-work/
