@@ -5,7 +5,7 @@ QTabBar::tab {
   /* height: 16px; */
   padding: 3px;
   /* border-bottom: 1px solid #aaff00; */
-  background-color: black;
+  background: #282a36;
   opacity: 0.7;
   color: palette(text);
 }
@@ -25,5 +25,5 @@ QTabBar::tab:selected {
   border-bottom: none;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
-  background: #282a36;
+  background-color: black;
 }

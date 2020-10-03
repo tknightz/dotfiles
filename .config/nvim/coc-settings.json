@@ -7,13 +7,15 @@
     "python.jediEnabled": true,
     "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
     "eslint.run": "onType",
+    "python.linting.pylintArgs": [
+      "--disable=C0301,C0116"
+    ],
     "diagnostic.displayByAle": true,
     "coc.source.file.ignoreHidden": false,
     "eslint.options": {"configFile": "/home/tknightz/.eslintrc.json"},
     "coc.preferences.messageLevel": "error",
-    "coc.preferences.formatOnInsertLeave": true,
-    "coc.preferences.formatOnSaveFiletypes": ["css", "html", "javascript", "typescript", "typescriptreact", "python"],
     "prettier.singleQuote": true,
+    "coc.preferences.formatOnSaveFiletypes": ["html", "css", "py", "js", "cpp", "c"],
     "prettier.trailingComma": "none",
     "prettier.bracketSpacing": true,
     "prettier.semi": false
