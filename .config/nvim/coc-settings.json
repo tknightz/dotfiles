@@ -14,8 +14,8 @@
     "coc.source.file.ignoreHidden": false,
     "eslint.options": {"configFile": "/home/tknightz/.eslintrc.json"},
     "coc.preferences.messageLevel": "error",
+    "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "css", "html", "viml", "cpp", "typescript"],
     "prettier.singleQuote": true,
-    "coc.preferences.formatOnSaveFiletypes": ["html", "css", "py", "js", "cpp", "c"],
     "prettier.trailingComma": "none",
     "prettier.bracketSpacing": true,
     "prettier.semi": false

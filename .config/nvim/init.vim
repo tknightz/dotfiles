@@ -1,5 +1,21 @@
+"     .___________. __  ___                                 
+"     |           ||  |/  /                                 
+"     `---|  |----`|  '  /                                  
+"         |  |     |    <                                   
+"         |  |     |  .  \                                  
+"         |__|     |__|\__\                                 
+"       ______   ______   .__   __.  _______  __    _______ 
+"      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
+"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
+"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ | 
+"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| | 
+"      \______| \______/  |__| \__| |__|     |__|  \______| 
+"                                                           
+"     
+"     This is my personal configurations for vim, nvim.
+"     You can customize it to solve your problems.
 
-" runtime! debian.vim
+
 filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
@@ -35,6 +51,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'qpkorr/vim-bufkill'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Raimondi/delimitMate'
+Plug 'tknightz/projectile.vim'
 
 " Plugin for project manager
 Plug 'tveskag/nvim-blame-line'
@@ -45,6 +62,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'turbio/bracey.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'jvanja/vim-bootstrap4-snippets'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf' 
@@ -127,16 +148,6 @@ endif
 "set mouse=a		" Enable mouse usage (all modes)
 
 
-
-
-" ------------------------- Mapping Ground ----------------------------------
-
-
-
-"  --------------------------- Variables Ground ------------------------
-
-
-
 " Source file config
 
 if has("xclip")
@@ -169,6 +180,10 @@ endif
 
 if filereadable($HOME . "/.config/nvim/which_key.vim")
     source $HOME/.config/nvim/which_key.vim
+endif
+
+if filereadable($HOME . "/.config/nvim/override_map.vim")
+    source $HOME/.config/nvim/override_map.vim
 endif
 " -------------------- Sources Ground ---------------------
 " Source a global configuration file if available

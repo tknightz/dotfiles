@@ -1,7 +1,27 @@
+"     .___________. __  ___                                 
+"     |           ||  |/  /                                 
+"     `---|  |----`|  '  /                                  
+"         |  |     |    <                                   
+"         |  |     |  .  \                                  
+"         |__|     |__|\__\                                 
+"       ______   ______   .__   __.  _______  __    _______ 
+"      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
+"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
+"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ | 
+"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| | 
+"      \______| \______/  |__| \__| |__|     |__|  \______| 
+"                                                           
+"     
+"     This is my personal configurations for vim, nvim.
+"     You can customize it to solve your problems.
+
 " Config git blame line
 let g:blameLineVirtualTextHighlight = 'Comment'
 let g:blameLineVirtualTextPrefix = '  >> '
 let g:blameLineGitFormat = '  a.k.a %an,  : %s,  : %ar'
+
+
+let g:UltiSnipsExpandTrigger="<C-l>"
 
 set t_ZH=[3m
 set t_ZR=[23m
@@ -69,13 +89,14 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall 
 let g:user_emmet_leader_key=','
 
-let g:user_emmet_expandabbr_key='<Tab>'
+" let g:user_emmet_expandabbr_key='<Tab>'
 " autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Confing vim markdown preview
 
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_browser = "brave"
+let g:instant_markdown_port = 6969
 
 " -------------------- Setting Ground ---------------------
 
@@ -98,7 +119,7 @@ set relativenumber
 set foldmethod=indent
 set foldlevel=99
 set t_Co=256
-set shortmess=at
+" set shortmess=at
 " set mouse=a
 
 highlight Normal guibg=none ctermbg=NONE

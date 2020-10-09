@@ -1,3 +1,20 @@
+"     .___________. __  ___                                 
+"     |           ||  |/  /                                 
+"     `---|  |----`|  '  /                                  
+"         |  |     |    <                                   
+"         |  |     |  .  \                                  
+"         |__|     |__|\__\                                 
+"       ______   ______   .__   __.  _______  __    _______ 
+"      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
+"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
+"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ | 
+"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| | 
+"      \______| \______/  |__| \__| |__|     |__|  \______| 
+"                                                           
+"     
+"     This is my personal configurations for vim, nvim.
+"     You can customize it to solve your problems.
+
 let g:mapleader = ','
 
 " Vim-javascript
@@ -7,7 +24,7 @@ let g:mapleader = ','
 " Ctrl + y Copying whole file into clipboard
 nnoremap <C-y> :%y+<CR>
 " Ctrl + y  Copying lines selected in visual mode
-vnoremap <C-y> :y+<CR>
+vnoremap <C-y> "+y
 " Ctrl + p Pasting texts from clipboard to vim
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
@@ -50,3 +67,10 @@ noremap <silent> <C-Down> :resize -3<CR>
 
 map <Leader>th <C-w>t<C-w>H
 map <Leader>tk <C-w>t<C-w>K
+
+nmap <C-_> <Plug>CommentaryLine
+vmap <C-_> <Plug>Commentary
+
+nmap <S-y> y$
+
+nmap ;p :AddProject<CR>
