@@ -15,13 +15,12 @@
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
-set timeoutlen=500
+let g:mapleader="\<Space>"
 
-let g:mapleader = "\<Space>"
 let g:which_key_use_floating_win = 0
 let g:git_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+" nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 
 " Map leader to which_key
 " nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
@@ -87,32 +86,33 @@ let g:which_key_map.b = {
 let g:which_key_map.f = {
       \ 'name' : 'file >>' ,
       \ 'f' : [':call Current_File_Proj()'           , 'find files here'],
-      \ 'F' : [':Files ~/Documents/Code'             , 'fzf-code-folder'],
       \ 's' : [':w'                                  , 'save'],
       \ 'g' : [':GFiles?'                            , 'git files changes'],
       \ 'c' : [':%y+'                                , 'copy all'],
       \ 'd' : [':call CopyPath("dir")'               , 'copy dir file'],
       \ 'p' : [':call CopyPath("file")'              , 'copy path file'],
+      \ 'r' : [':call Insert_Relative_Path()'        , 'relative path importer'],
+      \ '.' : [':Files .'                            , 'find files project'],
       \ }
 
 let g:which_key_map.i = {
       \ 'name' : 'issues >>' ,
-      \ 'n' : [':ALENext .'                 , 'next']    ,
-      \ 'p' : [':ALEPrevious .'             , 'previous']    ,
-      \ 'f' : [':ALEFix'                    , 'fix']    ,
-      \ 'i' : [':ALEImport'                 , 'import']    ,
+      \ 'n' : [':ALENext .'                 , 'next'],
+      \ 'p' : [':ALEPrevious .'             , 'previous'],
+      \ 'f' : [':ALEFix'                    , 'fix'],
+      \ 'i' : [':ALEImport'                 , 'import'],
       \ }
 
 let g:which_key_map.c = {
       \ 'name' : 'cocnvim >>' ,
-      \ 'd' : [':CocList diagnostics'        , 'diagnostics']       ,
-      \ 'e' : [':CocList extensions'         , 'extensions']        ,
-      \ 'c' : [':CocList commands'           , 'commands']          ,
-      \ 'o' : [':CocList outline'            , 'outline']    ,
-      \ 's' : [':CocList -I symbols'         , 'symbols']     ,
-      \ 'j' : [':CocNext'                    , 'next']     ,
-      \ 'k' : [':CocPrev'                    , 'prev']     ,
-      \ 'p' : [':CocListResume'              , 'resume'] ,
+      \ 'd' : [':CocList diagnostics'        , 'diagnostics'],
+      \ 'e' : [':CocList extensions'         , 'extensions'],
+      \ 'c' : [':CocList commands'           , 'commands'],
+      \ 'o' : [':CocList outline'            , 'outline'],
+      \ 's' : [':CocList -I symbols'         , 'symbols'],
+      \ 'j' : [':CocNext'                    , 'next'],
+      \ 'k' : [':CocPrev'                    , 'prev'],
+      \ 'p' : [':CocListResume'              , 'resume'],
       \ }
 
 let g:which_key_map.g = {
@@ -122,6 +122,7 @@ let g:which_key_map.g = {
     \ 'm'       : [':Git mergetool'                             , 'merge'],
     \ 'g'       : [':Ggrep'                                     , 'grep'],
     \ 'D'       : [':GDelete'                                   , 'delete'],
+    \ 'f'       : [':GFiles?'                                   , 'git files changes'],
     \ 'r'       : [':Gread'                                     , 'read'],
     \ 'c'       : [':Git commit -a'                             , 'commit'],
     \ 'b'       : [':ToggleBlameLine'                           , 'blame'],
@@ -139,11 +140,11 @@ let g:which_key_map.g = {
         \ 'h'       : [':GitGutterLineHighlightsToggle'        , 'highlight'],
         \ 'l'       : [':GitGutterLineNrHighlightsToggle'      , 'linenumber'],
     \},
-    \ 'l'       : [':Git log'                        , 'log'],
-    \ 'w'       : [':Gwrite'                         , 'write-add'],
-    \ 'p'       : [':Git --no-pager push'            , 'push'],
-    \ 'P'       : [':Git --no-pager fetch'           , 'pull'],
-    \ 'L'       : [':FloatermNew lazygit'            , 'lazygit'],
+    \ 'l'       : [':Git log'                             , 'log'],
+    \ 'w'       : [':Gwrite'                              , 'write-add'],
+    \ 'p'       : [':Git --no-pager push origin HEAD'     , 'push'],
+    \ 'P'       : [':Git --no-pager fetch origin HEAD'         , 'pull'],
+    \ 'L'       : [':FloatermNew lazygit'                 , 'lazygit'],
     \}
 
 let g:which_key_map.p = {
@@ -199,4 +200,11 @@ let g:which_key_map.H = [':History:'           , 'history-command']
 
 let g:which_key_map.S = [':Colors'             , 'scheme']
 
-call which_key#register('<Space>', "g:which_key_map")
+" call which_key#register('<Space>', "g:which_key_map")
+
+
+
+autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+set timeoutlen=500

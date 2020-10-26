@@ -23,7 +23,6 @@ call plug#begin('~/.vim/plugged')
 " On-demand loading
 
 " Theme and appearance
-Plug 'morhetz/gruvbox'
 Plug 'arzg/vim-colors-xcode'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'vim-airline/vim-airline'
@@ -38,7 +37,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'voldikss/vim-floaterm'
 Plug 'haya14busa/is.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -50,7 +49,8 @@ Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-speeddating'
 Plug 'qpkorr/vim-bufkill'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'Raimondi/delimitMate'
+Plug 'markonm/traces.vim'
+Plug 'Yggdroot/indentLine'
 Plug 'tknightz/projectile.vim'
 
 " Plugin for project manager
@@ -63,9 +63,6 @@ Plug 'mattn/emmet-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'turbio/bracey.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'jvanja/vim-bootstrap4-snippets'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf' 
@@ -113,9 +110,10 @@ filetype plugin indent on    " required
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
+
 if has("syntax")
   set termguicolors
-  colo quantum
+  " colo palenight
   syntax on
 endif
 
@@ -187,6 +185,10 @@ if filereadable($HOME . "/.config/nvim/override_map.vim")
 endif
 " -------------------- Sources Ground ---------------------
 " Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
+" if filereadable("/etc/vim/vimrc.local")
+"   source /etc/vim/vimrc.local
+" endif
+if filereadable($HOME . "/.config/nvim/mycolo.vim")
+    source $HOME/.config/nvim/mycolo.vim
 endif
+

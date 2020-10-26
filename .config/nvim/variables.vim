@@ -20,27 +20,42 @@ let g:blameLineVirtualTextHighlight = 'Comment'
 let g:blameLineVirtualTextPrefix = '  >> '
 let g:blameLineGitFormat = '  a.k.a %an,  : %s,  : %ar'
 
+" Config git guiter
+highlight GitGutterAdd    guifg=#40ff73 gui=bold ctermfg=2
+highlight GitGutterChange guifg=#d3ff0f gui=bold ctermfg=226
+highlight GitGutterDelete guifg=#d90000 gui=bold ctermfg=1
 
-let g:UltiSnipsExpandTrigger="<C-l>"
+
+let g:UltiSnipsExpandTrigger="<Tab>"
 
 set t_ZH=[3m
 set t_ZR=[23m
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 let g:palenight_terminal_italics=1
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
+" --------------- Variables indentLine ------------------
+let g:indentLine_setColors = 238
+let g:indentLine_color_term = 235
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " Config airline variables (powerline 100% vimscript)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16_snazzy'
+let g:airline_theme='base16_spacemacs'
 
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#displayed_head_limit = 10
 
+let g:airline_section_c = '%{expand("%:t")}'
+let g:airline_section_y = ''
 
 "Config fuzzy variables
 let g:fzf_preview_highlighter = "highlight -O xterm256 --line-number --style rdark --force"
@@ -58,13 +73,12 @@ command! -nargs=1 Prettier :silent CocCommand prettier.formatFile
 
 let g:ale_linters = {
 \ 'javascript': ['eslint', 'tsserver'],
-\ 'python': ['pylint']
+\ 'python': ['flake8']
 \}
 let g:ale_fixers = {
 \ 'javascript': ['eslint', 'prettier'],
-\ 'python': ['autopep8']
+\ 'python': ['black']
 \}
-let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_python_flake8_options="--ignore=E501"
 let g:ale_sign_error = ' ' 
@@ -119,11 +133,9 @@ set relativenumber
 set foldmethod=indent
 set foldlevel=99
 set t_Co=256
-" set shortmess=at
+set shortmess=at
 " set mouse=a
 
-highlight Normal guibg=none ctermbg=NONE
-highlight NonText guibg=none
 set updatetime=300
 set hidden
-set smartindent
+" set smartindent

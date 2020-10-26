@@ -16,6 +16,11 @@ export FZF_DEFAULT_COMMAND="rg --hidden --files --follow -g '!{.git/*,node_modul
 export BAT_THEME="base16"
 export EDITOR=nvim
 export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=dark
+--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+'
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -87,7 +92,7 @@ POWERLEVEL9K_VI_MODE_OVERWRITE_BACKGROUND=red
 POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B2'
 POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0B0'
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{red}'
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{green} '
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{green} %f'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon root_indicator ssh dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ip time)
 
@@ -172,6 +177,8 @@ function runc(){
 alias runc=runc
 
 alias tmux="env TERM=screen-256color tmux"
+
+# eval "$(starship init zsh)"
 
 
 # export MANPATH="/usr/local/man:$MANPATH"

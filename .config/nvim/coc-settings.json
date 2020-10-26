@@ -1,22 +1,28 @@
 {
-	"diagnostic.errorSign": " ",
-  	"diagnostic.warningSign": " ",
-  	"diagnostic.infoSign": "",
-    "diagnostic.refreshOnInsertMode": true,
-    "python.linting.flake8Enabled": true,
-    "python.jediEnabled": true,
-    "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
-    "eslint.run": "onType",
-    "python.linting.pylintArgs": [
-      "--disable=C0301,C0116"
-    ],
-    "diagnostic.displayByAle": true,
-    "coc.source.file.ignoreHidden": false,
-    "eslint.options": {"configFile": "/home/tknightz/.eslintrc.json"},
-    "coc.preferences.messageLevel": "error",
-    "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "css", "html", "viml", "cpp", "typescript"],
-    "prettier.singleQuote": true,
-    "prettier.trailingComma": "none",
-    "prettier.bracketSpacing": true,
-    "prettier.semi": false
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": "",
+  "diagnostic.refreshOnInsertMode": true,
+  "python.linting.flake8Enabled": true,
+  "python.jediEnabled": true,
+  "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
+  "eslint.run": "onType",
+  "python.linting.flake8Args": ["--disable=C0301"],
+  "diagnostic.displayByAle": true,
+  "coc.source.file.ignoreHidden": false,
+  "eslint.options": { "configFile": "/home/tknightz/.eslintrc.json" },
+  "coc.preferences.messageLevel": "error",
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "css",
+    "javascript",
+    "python",
+    "typescript",
+    "coffescript",
+    "json"
+  ],
+  "__prettier.bracketSpacing": true,
+  "prettier.semi": false
 }
