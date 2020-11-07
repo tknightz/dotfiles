@@ -33,6 +33,9 @@ else
     sudo apt install git vim vifm neovim tmux zsh ibus xclip -y
     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     sudo apt install nodejs
+    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+    sudo dpkg -i ripgrep_11.0.2.amd64.deb
+    rm ripgrep_11.0.2.amd64.deb
 fi
 
 # Install Vim-plug
@@ -45,6 +48,7 @@ echo "${BLUE}Installing Vim...${RESET}"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "${BLUE}Configuring...${RESET}"
+mkdir -p ~/.config
 cp -r ./.config/* ~/.config
 cp .vimrc ~
 vim -c 'PlugInstall' \

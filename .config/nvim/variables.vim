@@ -44,6 +44,7 @@ let g:indentLine_color_term = 235
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " Config airline variables (powerline 100% vimscript)
+let g:airline#extensions#keymap#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
