@@ -22,7 +22,7 @@ hi SignColumn guifg=#ffffff guibg=#241e27 guisp=#241e27 gui=NONE ctermfg=15 cter
 "hi CTagsGlobalVariable -- no settings --
 "hi SpellRare -- no settings --
 "hi EnumerationValue -- no settings --
-hi CursorLine guifg=NONE guibg=#794e8f guisp=#794e8f gui=bold ctermfg=248 ctermbg=122 cterm=NONE
+hi CursorLine guifg=NONE guibg=#794e8f guisp=#794e8f gui=NONE ctermfg=248 ctermbg=122 cterm=NONE
 "hi Union -- no settings --
 "hi TabLineFill -- no settings --
 "hi VisualNOS -- no settings --
@@ -71,7 +71,7 @@ hi Boolean guifg=#cc8aff guibg=NONE guisp=NONE gui=NONE ctermfg=177 ctermbg=NONE
 hi Operator guifg=#ff8bb2 guibg=NONE guisp=NONE gui=NONE ctermfg=211 ctermbg=NONE cterm=NONE
 hi Question guifg=#88ff00 guibg=NONE guisp=NONE gui=NONE ctermfg=118 ctermbg=NONE cterm=NONE
 hi WarningMsg guifg=#ff640c guibg=#241E27 guisp=#241E27 gui=NONE ctermfg=15 ctermbg=185 cterm=NONE
-hi DiffDelete guifg=#8a8a8a guibg=#d90000 guisp=#d90000 gui=NONE ctermfg=194 ctermbg=101 cterm=NONE
+hi DiffDelete guifg=#8a8a8a guibg=#ff5555 guisp=#ff5555 gui=bold ctermfg=194 ctermbg=101 cterm=NONE
 hi ModeMsg guifg=#e8b9ff guibg=NONE guisp=NONE gui=NONE ctermfg=183 ctermbg=NONE cterm=NONE
 hi Define guifg=#6e9cf8 guibg=NONE guisp=NONE gui=NONE ctermfg=69 ctermbg=NONE cterm=NONE
 hi Function guifg=#40ff73 guibg=NONE guisp=NONE gui=bold ctermfg=84 ctermbg=NONE cterm=bold
@@ -92,13 +92,13 @@ hi Constant guifg=#ff00a2 guibg=NONE guisp=NONE gui=bold ctermfg=199 ctermbg=NON
 hi Tag guifg=#ff9dd1 guibg=NONE guisp=NONE gui=NONE ctermfg=218 ctermbg=NONE cterm=NONE
 hi String guifg=#6ebeff guibg=NONE guisp=NONE gui=NONE ctermfg=75 ctermbg=234 cterm=NONE
 hi PMenuThumb guifg=#964296 guibg=#442554 guisp=#442554 gui=NONE ctermfg=133 ctermbg=53 cterm=NONE
-hi MatchParen guifg=#40ff73 guibg=NONE guisp=NONE gui=bold ctermfg=248 ctermbg=122 cterm=NONE
+hi MatchParen guifg=#ffaf00 guibg=NONE guisp=NONE gui=bold ctermfg=248 ctermbg=122 cterm=NONE
 hi Repeat guifg=#ff8bb2 guibg=NONE guisp=NONE gui=NONE ctermfg=211 ctermbg=NONE cterm=NONE
 hi Directory guifg=#00c8ff guibg=NONE guisp=NONE gui=NONE ctermfg=45 ctermbg=NONE cterm=NONE
 hi Structure guifg=#ff8bb2 guibg=NONE guisp=NONE gui=NONE ctermfg=211 ctermbg=NONE cterm=NONE
 hi Macro guifg=#6e9cf8 guibg=NONE guisp=NONE gui=NONE ctermfg=69 ctermbg=NONE cterm=NONE
 hi Underlined guifg=#c2ff33 guibg=NONE guisp=NONE gui=NONE ctermfg=191 ctermbg=NONE cterm=NONE
-hi DiffAdd guifg=#000000 guibg=#40ff73 guisp=#40ff73 gui=NONE ctermfg=194 ctermbg=66 cterm=NONE
+hi DiffAdd guifg=#000000 guibg=#40ff73 guisp=#40ff73 gui=bold ctermfg=194 ctermbg=66 cterm=NONE
 hi cursorim guifg=#a6a6a6 guibg=#d88bff guisp=#d88bff gui=NONE ctermfg=248 ctermbg=177 cterm=NONE
 hi mbenormal guifg=#f7ffd5 guibg=#3a2e3f guisp=#3a2e3f gui=NONE ctermfg=230 ctermbg=237 cterm=NONE
 hi perlspecialstring guifg=#ff9dd1 guibg=#404040 guisp=#404040 gui=NONE ctermfg=218 ctermbg=238 cterm=NONE
@@ -124,4 +124,4 @@ hi cspecialcharacter guifg=#ff9dd1 guibg=#404040 guisp=#404040 gui=NONE ctermfg=
 autocmd! Syntax python :syntax keyword PreProc self
 highlight GitGutterAdd    guifg=#40ff73 gui=bold ctermfg=2
 highlight GitGutterChange guifg=#d3ff0f gui=bold ctermfg=226
-highlight GitGutterDelete guifg=#d90000 gui=bold ctermfg=1
+highlight GitGutterDelete guifg=#ff5555 gui=bold ctermfg=1

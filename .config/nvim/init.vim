@@ -50,7 +50,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'qpkorr/vim-bufkill'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'markonm/traces.vim'
-Plug 'Yggdroot/indentLine'
+Plug 'junegunn/vim-easy-align'
+Plug 'simnalamburt/vim-mundo'
 Plug 'tknightz/projectile.vim'
 
 " Plugin for project manager
@@ -65,7 +66,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'turbio/bracey.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf' 
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 
@@ -191,4 +192,3 @@ endif
 if filereadable($HOME . "/.config/nvim/mycolo.vim")
     source $HOME/.config/nvim/mycolo.vim
 endif
-

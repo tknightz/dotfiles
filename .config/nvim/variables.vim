@@ -44,6 +44,11 @@ let g:indentLine_color_term = 235
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " Config airline variables (powerline 100% vimscript)
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline#extensions#keymap#enabled = 0
+let g:airline_symbols.dirty='  '
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -79,6 +84,8 @@ let g:ale_fixers = {
 \ 'javascript': ['eslint', 'prettier'],
 \ 'python': ['black']
 \}
+let g:ale_completion_autoimport = 1
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_python_flake8_options="--ignore=E501"
 let g:ale_sign_error = ' ' 
@@ -87,14 +94,13 @@ let g:ale_echo_msg_error_str = ' '
 let g:ale_echo_msg_warning_str = ' '
 let g:ale_echo_msg_format = '%severity% : %s'
 
-let g:ale_fix_on_save = 1
 let g:ale_disable_lsp = 1
 
 
 " Config table mode
 let g:mapleader=','
 let g:table_mode_corner_corner='+'
-let g:table_mode_header_fillchar='='
+" let g:table_mode_header_fillchar='='
 
 " let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
 " Config emmet
@@ -127,15 +133,19 @@ set sw=2
 set cmdheight=1
 set expandtab
 set number
-set hlsearch
+" set hlsearch
 set ignorecase		" Do case insensitive matching
 set relativenumber
 set foldmethod=indent
 set foldlevel=99
 set t_Co=256
-set shortmess=at
+" set smartcase
 " set mouse=a
 
+set cursorline
 set updatetime=300
 set hidden
 " set smartindent
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif

@@ -19,6 +19,11 @@ function! CopyPath(...)
   if a:1 == 'dir'
     let @+ = expand('%:p:h')
     echo "Copied dir path."
+  elseif a:1 == 'project'
+    if exists('g:working_dir')
+      let @+ = g:working_dir
+      echo "Copied project path"
+    endif
   else
     let @+ = expand('%:p')
     echo "Copied file path."
@@ -69,15 +74,11 @@ function! PastePath(...)
   let path = a:1
   let arr_part_1 = split(path, '/')
   let s:full_path = expand('%:p:h')
-  if exists('g:working_dir')
-    let s:relative_path = substitute(s:full_path, g:working_dir, '', '')
+  let s:current_project = system('git -C '. s:full_path . ' rev-parse --show-toplevel 2> /dev/null')[:-2]
+  if exists('s:current_project')
+    let s:relative_path = substitute(s:full_path, s:current_project, '', '')
   else
-    let s:current_project = system('git -C '. s:full_path . ' rev-parse --show-toplevel 2> /dev/null')[:-2]
-    if exists('s:current_project')
-      let s:relative_path = substitute(s:full_path, s:current_project, '', '')
-    else
-      let s:relative_path = s:full_path
-    endif
+    let s:relative_path = s:full_path
   endif
 
   let arr_part_2 = split(s:relative_path, '/')
@@ -124,8 +125,8 @@ function! Insert_Relative_Path()
   else
     let s:source_path = s:full_path
   endif
-  call fzf#run(fzf#wrap({
-  \'source': 'rg --files --follow --hidden -g "!{node_modules/*,.git/*}" '.s:source_path. ' | sed "s:^"'.s:source_path.'/::',  
+  return fzf#run(fzf#wrap({
+  \'source': 'rg --files --follow --hidden -g "!{node_modules,.git}" '.s:source_path. ' | sed "s:^"'.s:source_path.'/::',  
   \'sink': function('PastePath'),
   \'options': '--ansi --tiebreak=begin --prompt="  File >> "'}))
 endfunction

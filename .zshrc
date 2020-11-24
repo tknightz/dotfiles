@@ -12,10 +12,12 @@
 # Path to your oh-my-zsh installation.
 # export TERM='screen-256color'
 export ZSH="$HOME/.oh-my-zsh"
-export FZF_DEFAULT_COMMAND="rg --hidden --files --follow -g '!{.git/*,node_modules/*}'"
+export FZF_DEFAULT_COMMAND="rg --hidden --files --follow -g '!{.git,node_modules}'"
 export BAT_THEME="base16"
 export EDITOR=nvim
+export BROWSER=brave
 export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin
+# export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
@@ -34,6 +36,7 @@ fi
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 POWERLEVEL9K_MODE=nerdfont-complete
+# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 # POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
@@ -93,7 +96,7 @@ POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B2'
 POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0B0'
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{red}'
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{green} %f'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon root_indicator ssh dir dir_writable vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon root_indicator ssh dir dir_writable virtualenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ip time)
 
 # Set list of themes to pick from when loading at random
@@ -161,6 +164,7 @@ plugins=(
     git
     zsh-syntax-highlighting
     zsh-autosuggestions
+    virtualenv
 )
 
 # ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -177,6 +181,28 @@ function runc(){
 alias runc=runc
 
 alias tmux="env TERM=screen-256color tmux"
+
+function run_bootstrap(){
+  sudo systemctl start redis
+  sudo systemctl start mongodb
+  sudo sysctl -p
+}
+
+alias runbs=run_bootstrap
+
+function stop_bootstrap(){
+  sudo systemctl stop redis
+  sudo systemctl stop mongodb
+}
+
+alias stopbs=stop_bootstrap
+
+
+function nvimdiff(){
+  nvim -d "$1" "$2" -c '$wincmd w' -c '$wincmd L'
+}
+
+alias nvimdiff=nvimdiff
 
 # eval "$(starship init zsh)"
 
@@ -207,4 +233,22 @@ alias tmux="env TERM=screen-256color tmux"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/tknightz/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tknightz/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tknightz/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tknightz/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
