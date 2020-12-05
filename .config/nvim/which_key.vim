@@ -56,7 +56,7 @@ let g:which_key_map.w = {
         \ 'h'       : [',th'       , 'swap-window-vertical' ],
         \ 'k'       : [',tk'       , 'swap-window-horizontal' ],
         \},
-      \ 'i' : ['iWindows'    , 'fzf-window'],
+      \ 'i' : [':Windows'    , 'fzf-window'],
       \ }
 
 let g:which_key_map.t = {
@@ -72,27 +72,39 @@ let g:which_key_map.t = {
 
 let g:which_key_map.t.m = 'which_key_ignore'
 
+let g:which_key_map['!'] = { 'name': 'which_key_ignore' }
+
+let g:which_key_map.F = {
+      \ 'name' : 'format >>',
+      \ 'j'    : [':%!python -m json.tool'         , 'Json'],
+      \ 'c'    : [':call g:Convert_Json()'         , 'Convert Json'],
+      \}
+
 let g:which_key_map.b = {
       \ 'name' : 'buffer >>' ,
       \ 'd' : [':BD'       , 'delete-buffer'],
-      \ 'f' : ['bfirst'    , 'first-buffer'],
-      \ 'h' : ['Startify'  , 'home-buffer'],
-      \ 'l' : ['blast'     , 'last-buffer'],
-      \ 'n' : ['bnext'     , 'next-buffer'],
-      \ 'p' : ['bprevious' , 'previous-buffer'],
-      \ '/' : ['Buffers'   , 'fzf-buffer'],
+      \ 'f' : [':bfirst'    , 'first-buffer'],
+      \ 'h' : [':Startify'  , 'home-buffer'],
+      \ 'l' : [':blast'     , 'last-buffer'],
+      \ 'n' : [':bnext'     , 'next-buffer'],
+      \ 'p' : [':bprevious' , 'previous-buffer'],
+      \ '/' : [':Buffers'   , 'fzf-buffer'],
       \ }
 
 let g:which_key_map.f = {
       \ 'name' : 'file >>' ,
-      \ 'f' : [':call Current_File_Proj()'           , 'find files here'],
+      \ 'f' : [':call g:Current_File_Proj()'         , 'find files here'],
       \ 's' : [':w'                                  , 'save'],
       \ 'g' : [':GFiles?'                            , 'git files changes'],
-      \ 'c' : [':%y+'                                , 'copy all'],
-      \ 'd' : [':call CopyPath("dir")'               , 'copy dir file'],
-      \ 'p' : [':call CopyPath("file")'              , 'copy path file'],
+      \ 'c' : {
+            \ 'name': 'copy >>',
+            \ 'a'   : [':%y+'                      ,'all'],
+            \ 'd'   : [':call CopyPath("dir")'     ,'directory path'],
+            \ 'f'   : [':call CopyPath("file")'    ,'file path'],
+            \ 'p'   : [':call CopyPath("project")' ,'project path'],
+      \},
+      \ 'p' : [':Files .'                            , 'project fzf'],
       \ 'r' : [':call Insert_Relative_Path()'        , 'relative path importer'],
-      \ '.' : [':Files .'                            , 'find files project'],
       \ }
 
 let g:which_key_map.i = {
@@ -184,6 +196,12 @@ let g:which_key_map.s = {
     \ 'p'       : [':e ~/.config/nvim/projectile.vim'            , 'projectile' ],
     \}
 
+let g:which_key_map.h = { 
+  \ 'name'      : 'history >>',
+  \ 'f'         : [':History'          , 'file'],
+  \ 'e'         : [':MundoToggle'      , 'edit'],
+  \}
+
 let g:which_key_map.q = [':q'                  , 'quit']
 
 let g:which_key_map.n = ['<C-n>'               , 'nerdtree']
@@ -194,7 +212,6 @@ let g:which_key_map.T = [':FloatermNew zsh'    , 'terminal']
 
 let g:which_key_map.C = [':Commands'           , 'commands']
 
-let g:which_key_map.h = [':History'            , 'history-file']
 
 let g:which_key_map.H = [':History:'           , 'history-command']
 

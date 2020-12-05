@@ -29,6 +29,15 @@ vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 
+function! g:Convert_Json()
+  exec ":%s/'/\"/g"
+  exec ":%s/None/\"None\"/g"
+  exec ":%s/True/\"True\"/g"
+  exec ":%s/False/\"False\"/g"
+  exec ":%s/,*}/}/g"
+  exec ":%!python -m json.tool"
+endfunction
+
 " Ctrl + n to toggle NerdTree
 " function! g:NerdTree_Open()
 "   if exists("g:NERDTree") && g:NERDTree.IsOpen() == 1

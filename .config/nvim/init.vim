@@ -29,8 +29,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kjssad/quantum.vim'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 Plug 'gko/vim-coloresque'
+Plug 'sheerun/vim-polyglot'
 
 " Productivity
 Plug 'jceb/vim-orgmode'
@@ -50,13 +51,15 @@ Plug 'tpope/vim-speeddating'
 Plug 'qpkorr/vim-bufkill'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'markonm/traces.vim'
-Plug 'Yggdroot/indentLine'
+Plug 'junegunn/vim-easy-align'
 Plug 'tknightz/projectile.vim'
+Plug 'pechorin/any-jump.vim'
 
 " Plugin for project manager
 Plug 'tveskag/nvim-blame-line'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'simnalamburt/vim-mundo'
 
 " Plugin for web-mode
 Plug 'mattn/emmet-vim'
@@ -65,7 +68,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'turbio/bracey.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf' 
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 
@@ -191,4 +194,3 @@ endif
 if filereadable($HOME . "/.config/nvim/mycolo.vim")
     source $HOME/.config/nvim/mycolo.vim
 endif
-

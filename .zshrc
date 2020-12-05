@@ -14,6 +14,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND="rg --hidden --files --follow -g '!{.git/*,node_modules/*}'"
 export BAT_THEME="base16"
+export BROWSER=brave
 export EDITOR=nvim
 export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
@@ -34,7 +35,7 @@ fi
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 POWERLEVEL9K_MODE=nerdfont-complete
-# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
@@ -91,6 +92,7 @@ POWERLEVEL9K_VI_OVERWRITE_MODE_STRING=OVERTYPE
 POWERLEVEL9K_VI_MODE_OVERWRITE_BACKGROUND=red
 POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B2'
 POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0B0'
+# POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{red}'
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{green} %f'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon root_indicator ssh dir dir_writable vcs)
@@ -178,6 +180,20 @@ alias runc=runc
 
 alias tmux="env TERM=screen-256color tmux"
 
+function runbs(){
+  sudo systemctl start mongodb
+  sudo systemctl start redis
+}
+alias runbs=runbs
+
+function stopbs(){
+  sudo systemctl stop mongodb
+  sudo systemctl stop redis
+}
+alias stopbs=stopbs
+
+alias cursor="printf '\e]50;CursorShape=2\x7'"
+
 # eval "$(starship init zsh)"
 
 
@@ -207,4 +223,21 @@ alias tmux="env TERM=screen-256color tmux"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/tulen/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tulen/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tulen/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tulen/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+conda deactivate
+# <<< conda initialize <<<
 
