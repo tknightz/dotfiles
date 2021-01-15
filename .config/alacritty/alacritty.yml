@@ -19,7 +19,7 @@ window:
   # Specified in number of columns/lines, not pixels. If both are zero this
   # setting is ignored.
   dimensions:
-    columns: 80
+    columns: 130
     lines: 35
 
   # Window padding (changes require restart)
@@ -68,25 +68,41 @@ font:
   # Style can be specified to pick a specific face.
   normal:
     family: Hack Nerd Font
+    # family: Fantasque Sans Mono
+    # family: Operator Mono for Powerline
+    # family: OperatorMonoLig Nerd Font
+    # family: Operator Mono Medium
     # family: "Fira Code"
     # family: "Source Code Pro"
-    # style: Retina
+    # style: Semi Condensed SemiBold
+    style: Regular
 
   # The bold font face
   bold:
     family: Hack Nerd Font
+    # family: Fantasque Sans Mono
+    # family: Operator Mono for Powerline
+    style: Bold
+    # family: OperatorMonoLig Nerd Font
+    # family: Inconsolata
+    # family: Operator Mono Medium
+    # family: Hack Nerd Font
     # family: "Fira Code"
     # family: "Source Code Pro"
 
   # The italic font face
   italic:
     family: Hack Nerd Font
+    # family: Fantasque Sans Mono
+    # family: Operator Mono for Powerline
+    style: Italic
+    # family: Hack Nerd Font
     # family: "Fira Code"
     # family: "Source Code Pro"
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 9
+  size: 9.5
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -125,94 +141,81 @@ draw_bold_text_with_bright_colors: false
 # custom_cursor_colors: false
 
 
-
-
-
-
-
-
-
-
-#colors:
-#  # Default colors
-#  primary:
-#    background: '#282828'
-#    foreground: '#d6d6d6'
-#
-#    dim_foreground:    '#dbdbdb'
-#    bright_foreground: '#d9d9d9'
-#    dim_background:    '#202020' # not sure
-#    bright_background: '#3a3a3a' # not sure
-#
-#  # Cursor colors
-#  cursor:
-#    text:   '#2c2c2c'
-#    cursor: '#d9d9d9'
-#
-#  # Normal colors
-#  normal:
-#    black:   '#1c1c1c'
-#    red:     '#bc5653'
-#    green:   '#909d63'
-#    yellow:  '#ebc17a'
-#    blue:    '#7eaac7'
-#    magenta: '#aa6292'
-#    cyan:    '#86d3ce'
-#    white:   '#cacaca'
-#
-#  # Bright colors
-#  bright:
-#    black:   '#636363'
-#    red:     '#bc5653'
-#    green:   '#909d63'
-#    yellow:  '#ebc17a'
-#    blue:    '#7eaac7'
-#    magenta: '#aa6292'
-#    cyan:    '#86d3ce'
-#    white:   '#f7f7f7'
-#
-#  # Dim colors
-#  dim:
-#    black:   '#232323'
-#    red:     '#74423f'
-#    green:   '#5e6547'
-#    yellow:  '#8b7653'
-#    blue:    '#556b79'
-#    magenta: '#6e4962'
-#    cyan:    '#5c8482'
-#    white:   '#828282'
-
-
-
-# Colors (Gruvbox dark)
+# Colors (Dracula)
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '#1d2021'
-    background: '#282828'
-    # soft contrast: background = '#32302f'
-    foreground: '#ebdbb2'
+    # background: '0x282a36'
+    background: '0x1f2020'
+    foreground: '0xf8f8f2'
+
+    # Bright and dim foreground colors
+    #
+    # The dimmed foreground color is calculated automatically if it is not present.
+    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+    # is `false`, the normal foreground color will be used.
+    #dim_foreground: '0x9a9a9a'
+    #bright_foreground: '0xffffff'
+
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor. If these are unset,
+  # the cursor color will be the inverse of the cell color.
+  cursor:
+    text: '0x44475a'
+    cursor: '0xf8f8f2'
+
+  # Selection colors
+  #
+  # Colors which should be used to draw the selection area. If selection
+  # background is unset, selection color will be the inverse of the cell colors.
+  # If only text is unset the cell text color will remain the same.
+  selection:
+    text: '0xf8f8f2'
+    background: '0x44475a'
 
   # Normal colors
   normal:
-    black:   '#373c43'
-    red:     '#e43729'
-    green:   '#00af5f'
-    yellow:  '#e7e927'
-    blue:    '#39aad6'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
-    orange:  '#ffaf00'
-    pink:    '#be708e'
+    black:   '0x000000'
+    red:     '0xff5555'
+    green:   '0x50fa7b'
+    yellow:  '0xf1fa8c'
+    blue:    '0xbd93f9'
+    magenta: '0xff79c6'
+    cyan:    '0x8be9fd'
+    white:   '0xbfbfbf'
 
   # Bright colors
   bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+    black:   '0x4d4d4d'
+    red:     '0xff6e67'
+    green:   '0x5af78e'
+    yellow:  '0xf4f99d'
+    blue:    '0xcaa9fa'
+    magenta: '0xff92d0'
+    cyan:    '0x9aedfe'
+    white:   '0xe6e6e6'
+
+  # Dim colors
+  #
+  # If the dim colors are not set, they will be calculated automatically based
+  # on the `normal` colors.
+  dim:
+    black:   '0x14151b'
+    red:     '0xff2222'
+    green:   '0x1ef956'
+    yellow:  '0xebf85b'
+    blue:    '0x4d5b86'
+    magenta: '0xff46b0'
+    cyan:    '0x59dffc'
+    white:   '0xe6e6d1'
+
+  # Indexed Colors
+  #
+  # The indexed colors include all colors from 16 to 256.
+  # When these are not set, they're filled with sensible defaults.
+  #
+  # Example:
+  #   `- { index: 16, color: '0xff00ff' }`
+  #
+  indexed_colors: []

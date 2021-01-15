@@ -4,7 +4,7 @@
   "diagnostic.infoSign": "",
   "diagnostic.refreshOnInsertMode": true,
   "python.linting.flake8Enabled": true,
-  "python.jediEnabled": false,
+  "python.jediEnabled": true,
   "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
   "eslint.run": "onType",
   "python.linting.flake8Args": [
@@ -14,6 +14,13 @@
   ],
   "diagnostic.displayByAle": true,
   "coc.source.file.ignoreHidden": false,
+  "coc.source.emoji.filetypes": [
+    "python",
+    "text",
+    "js",
+    "html",
+    "markdown"
+  ],
   "eslint.options": { "configFile": "/home/tknightz/.eslintrc.json" },
   "coc.preferences.messageLevel": "error",
   "prettier.singleQuote": true,
@@ -24,10 +31,11 @@
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
   "prettier.parser": "none",
-  "coc.preferences.formatOnSaveFiletypes": [
+  "__coc.preferences.formatOnSaveFiletypes": [
     "css",
     "python",
     "typescript",
     "coffescript",
+    "php"
   ]
 }

@@ -23,18 +23,14 @@ call plug#begin('~/.vim/plugged')
 " On-demand loading
 
 " Theme and appearance
-Plug 'arzg/vim-colors-xcode'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'kjssad/quantum.vim'
-" Plug 'pangloss/vim-javascript'
 Plug 'gko/vim-coloresque'
 Plug 'sheerun/vim-polyglot'
 
 " Productivity
-Plug 'jceb/vim-orgmode'
+" Plug 'jceb/vim-orgmode'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -52,14 +48,16 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'markonm/traces.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'tknightz/projectile.vim'
 Plug 'pechorin/any-jump.vim'
+" Plug 'preservim/tagbar'
+" Plug 'liuchengxu/vista.vim'
 
 " Plugin for project manager
 Plug 'tveskag/nvim-blame-line'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'simnalamburt/vim-mundo'
+Plug 'tknightz/projectile.vim'
 
 " Plugin for web-mode
 Plug 'mattn/emmet-vim'

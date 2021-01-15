@@ -16,14 +16,38 @@
 "     You can customize it to solve your problems.
 
 
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+
+" Config for Go
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+
 
 " Config git blame line
 let g:blameLineVirtualTextHighlight = 'Comment'
 let g:blameLineVirtualTextPrefix = '  >> '
 let g:blameLineGitFormat = '  a.k.a %an,  : %s,  : %ar'
+
+" Config vista.vim
+let g:vista#renderer#enable_icon = 1
+
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'ctags'
+
+let g:vista_default_executive = 'ctags'
+
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
 " Config git guiter
 highlight GitGutterAdd    guifg=#40ff73 gui=bold ctermfg=2
@@ -65,10 +89,11 @@ let g:airline#extensions#branch#displayed_head_limit = 10
 
 " let g:airline_section_c = '%{expand("%:t")}'
 let g:airline_section_y = ''
+let g:airline_section_c = ' '
 
 "Config fuzzy variables
 let g:fzf_preview_highlighter = "highlight -O xterm256 --line-number --style rdark --force"
-let g:fzf_preview_line_highlight = '\x1b[101m'
+" let g:fzf_preview_line_highlight = '\x1b[101m'
 let g:fzf_preview_line_highlight = '\x1b[48;2;80;80;80m'
 let g:fzf_preview_window = 'right:50%'
 
@@ -170,6 +195,8 @@ set updatetime=300
 set hidden
 set undofile
 set undodir=~/.vim/undo
+
+set completefunc=emoji#complete
 " set smartindent
 " if has("autocmd")
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -178,3 +205,17 @@ set undodir=~/.vim/undo
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif
 endif
+
+if exists('$TMUX')
+    " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
+    let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[5 q\<Esc>\\"
+    let &t_SR .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
+    let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
+    autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
+else
+    let &t_SI = "\<Esc>[5 q"
+    let &t_SR = "\<Esc>[4 q"
+    let &t_EI = "\<Esc>[1 q"
+
+    autocmd VimLeave * silent !echo -ne "\033[0 q"
+endi

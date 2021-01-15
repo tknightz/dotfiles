@@ -180,6 +180,8 @@ let g:which_key_map.e = {
     \ 't'       : [':TableModeToggle'   , 'table-mode-toggle'],
     \ 'h'       : [':nohls'             , 'disable-highlight'],
     \ 'c'       : ['<C-y>'              , 'copy-whole-file'],
+    \ 'p'       : ['<C-o>'              , 'previous position'],
+    \ 'l'       : ['g;'                 , 'last changes'],
     \}
 
 let g:which_key_map.r = [':Rg'      , 'grep-search']

@@ -39,7 +39,7 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_CUSTOM_OS_ICON="echo ♥ "
+POWERLEVEL9K_CUSTOM_OS_ICON="echo ♥ tknightz"
 POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND=red
 POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND=255
 OWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=black
@@ -163,6 +163,7 @@ plugins=(
     git
     zsh-syntax-highlighting
     zsh-autosuggestions
+    zsh-z
 )
 
 # ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -171,6 +172,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 alias vifm=vifmrun
+
+alias fzf="fzf -e -d '/' --with-nth=5"
 
 function runc(){
     g++ $1 -o ${1%.*} && ./${1%.*}

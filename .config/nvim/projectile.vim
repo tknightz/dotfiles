@@ -63,11 +63,12 @@ endfunction
 function! Git_New_Branch()
     call inputsave()
     let branch_name = input(" Branch's name: ")
-    silent exec ":Git branch ".branch_name
+    let standard_branch_name = substitute(branch_name, " ", "-", "g")
+    silent exec ":Git branch ".standard_branch_name
     call inputrestore()
-    silent exec ":Git checkout ".branch_name
+    silent exec ":Git checkout ".standard_branch_name
     redraw!
-    echo "Created branch. Switch to ".branch_name
+    echo "Created branch. Switch to ".standard_branch_name
 endfunction
 
 function! PastePath(...)
