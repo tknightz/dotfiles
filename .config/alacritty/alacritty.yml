@@ -67,7 +67,7 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: Hack Nerd Font
+    family: IBM Plex Mono
     # family: Fantasque Sans Mono
     # family: Operator Mono for Powerline
     # family: OperatorMonoLig Nerd Font
@@ -75,11 +75,11 @@ font:
     # family: "Fira Code"
     # family: "Source Code Pro"
     # style: Semi Condensed SemiBold
-    style: Regular
+    style: Medium
 
   # The bold font face
   bold:
-    family: Hack Nerd Font
+    family: IBM Plex Mono
     # family: Fantasque Sans Mono
     # family: Operator Mono for Powerline
     style: Bold
@@ -92,12 +92,11 @@ font:
 
   # The italic font face
   italic:
-    family: Hack Nerd Font
+    family: IBM Plex Mono
     # family: Fantasque Sans Mono
     # family: Operator Mono for Powerline
     style: Italic
     # family: Hack Nerd Font
-    # family: "Fira Code"
     # family: "Source Code Pro"
     # style: "Medium Italic"
 

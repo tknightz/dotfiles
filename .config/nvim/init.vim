@@ -30,7 +30,7 @@ Plug 'gko/vim-coloresque'
 Plug 'sheerun/vim-polyglot'
 
 " Productivity
-" Plug 'jceb/vim-orgmode'
+Plug 'jceb/vim-orgmode'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -45,12 +45,15 @@ Plug 'tpope/vim-surround'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-speeddating'
 Plug 'qpkorr/vim-bufkill'
-Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 Plug 'markonm/traces.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'pechorin/any-jump.vim'
+Plug 'pechorin/any-jump.vim', {'on': 'AnyJump'}
 " Plug 'preservim/tagbar'
 " Plug 'liuchengxu/vista.vim'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+
 
 " Plugin for project manager
 Plug 'tveskag/nvim-blame-line'
@@ -60,10 +63,10 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'tknightz/projectile.vim'
 
 " Plugin for web-mode
-Plug 'mattn/emmet-vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'turbio/bracey.vim'
+Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'scss']}
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'peitalin/vim-jsx-typescript', {'for': 'javascript'}
+Plug 'turbio/bracey.vim', {'for': 'html'}
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf'

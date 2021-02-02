@@ -23,6 +23,7 @@ hi SignColumn guifg=#ffffff guibg=#241e27 guisp=#241e27 gui=NONE ctermfg=15 cter
 "hi SpellRare -- no settings --
 "hi EnumerationValue -- no settings --
 hi CursorLine guifg=NONE guibg=#613F73 guisp=NONE gui=NONE ctermfg=248 ctermbg=122 cterm=NONE
+hi ColorColumn guifg=NONE guibg=#613F73 guisp=NONE gui=NONE ctermfg=248 ctermbg=122 cterm=NONE
 "hi Union -- no settings --
 "hi TabLineFill -- no settings --
 "hi VisualNOS -- no settings --

@@ -30,6 +30,13 @@ function! CopyPath(...)
   endif
 endfunction
 
+
+function! SearchForWord()
+  normal y
+  let word = @"
+  exec ":Rg " . word
+endfunction
+
 " Fugitive improvement
 
 function! Get_Branch_Name(...)

@@ -178,6 +178,7 @@ set sw=2
 set cmdheight=1
 set expandtab
 set number
+" set colorcolumn=80
 " set hlsearch
 set ignorecase		" Do case insensitive matching
 set relativenumber

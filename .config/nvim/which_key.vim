@@ -93,9 +93,10 @@ let g:which_key_map.b = {
 
 let g:which_key_map.f = {
       \ 'name' : 'file >>' ,
-      \ 'f' : [':call g:Current_File_Proj()'         , 'find files here'],
-      \ 's' : [':w'                                  , 'save'],
-      \ 'g' : [':GFiles?'                            , 'git files changes'],
+      \ 'f' : [':call call("g:Current_File_Proj", [])'         , 'find files here'],
+      \ 'w' : [':call SearchForWord()'                         , 'find word'],
+      \ 's' : [':w'                                            , 'save'],
+      \ 'g' : [':GFiles?'                                      , 'git files changes'],
       \ 'c' : {
             \ 'name': 'copy >>',
             \ 'a'   : [':%y+'                      ,'all'],
@@ -154,8 +155,8 @@ let g:which_key_map.g = {
     \},
     \ 'l'       : [':Git log'                             , 'log'],
     \ 'w'       : [':Gwrite'                              , 'write-add'],
-    \ 'p'       : [':Git --no-pager push origin HEAD'     , 'push'],
-    \ 'P'       : [':Git --no-pager fetch origin HEAD'         , 'pull'],
+    \ 'p'       : [':Git --no-pager push origin Head'     , 'push'],
+    \ 'P'       : [':Git --no-pager fetch origin master'  , 'pull'],
     \ 'L'       : [':FloatermNew lazygit'                 , 'lazygit'],
     \}
 
@@ -173,6 +174,7 @@ let g:which_key_map.P = {
   \ 'a'  : [':silent exec ":call g:Add_Project()"'     , 'add new project'],
   \ 'l'  : [':silent exec ":call g:List_Projects()"'   , 'list projects'],
   \ 'r'  : [':silent exec ":call g:Remove_Project()"'  , 'remove project'],
+  \ 'f'  : [':call call("g:Find_In_Project", [])'      , 'find files in project'],
   \}
 
 let g:which_key_map.e = {

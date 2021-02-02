@@ -49,8 +49,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 echo "${BLUE}Configuring...${RESET}"
 mkdir -p ~/.config
-cp -r ./.config/* ~/.config
-cp .vimrc ~
+ln -s $PWD/.config/nvim ~/.config/nvim
+ln -s $PWD/.config/alacritty ~/.config/alacritty
+ln -s $PWD/.config/vifm ~/.config/vifm
+ln -s $PWD/.vimrc ~/.vimrc
+
 vim -c 'PlugInstall' \
     -c 'qa'
 nvim -c 'PlugInstall' \

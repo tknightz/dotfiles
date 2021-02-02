@@ -37,7 +37,7 @@ function addsub(){
 
 function makeVideoScript(){
     time=$(ffmpeg -i "$2" 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//)
-    ffmpeg -loglevel quiet -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2,subtitles="$3":force_style='FontName=URW Gothic,FontSize=20,OutlineColour=&H80000000,Outline=1,Shadow=0,MarginV=20'" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time "${2%.*}".mp4 
+    ffmpeg -loglevel quiet -ignore_loop 0 -i "$1" -i "$2" -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2,subtitles="$3":force_style='FontName=IBMPlexMono-Medium,FontSize=20,OutlineColour=&H80000000,Outline=1,Shadow=0,MarginV=20'" -strict -2 -c:v libx264 -threads 4 -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -t $time "${2%.*}".mp4 
     echo 'Done'
 }
 
