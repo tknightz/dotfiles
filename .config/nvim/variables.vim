@@ -16,6 +16,10 @@
 "     You can customize it to solve your problems.
 
 
+" Polygot
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-p>"
+let g:UltiSnipsJumpBackwardTrigger="<c-n>"
 
 " Config for Go
 let g:go_highlight_build_constraints = 1
@@ -26,6 +30,13 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+let g:go_highlight_function_calls = 1
+
+let g:go_addtags_transform = "camelcase"
+let g:go_auto_type_info = 1
+let g:go_fmt_command = "goimports"
+
+
 
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
@@ -82,7 +93,7 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16_spacemacs'
+let g:airline_theme='base16_snazzy'
 
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
@@ -143,7 +154,6 @@ let g:ale_disable_lsp = 1
 
 
 " Config table mode
-let g:mapleader=','
 let g:table_mode_corner_corner='+'
 " let g:table_mode_header_fillchar='='
 
@@ -154,8 +164,8 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall 
 let g:user_emmet_leader_key=','
 
-" let g:user_emmet_expandabbr_key='<Tab>'
-" autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_expandabbr_key='<Tab>'
+autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Confing vim markdown preview
 
@@ -198,14 +208,16 @@ set undofile
 set undodir=~/.vim/undo
 
 set completefunc=emoji#complete
+set formatoptions=tcrq
+set signcolumn=yes
 " set smartindent
 " if has("autocmd")
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " endif
 
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif
-endif
+" if has("autocmd")
+"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif
+" endif
 
 if exists('$TMUX')
     " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
@@ -220,3 +232,6 @@ else
 
     autocmd VimLeave * silent !echo -ne "\033[0 q"
 endi
+
+" auto jump to last edited position.
+autocmd BufReadPost * silent! normal! g`"zv 

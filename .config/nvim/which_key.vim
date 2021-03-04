@@ -17,6 +17,7 @@
 
 let g:mapleader="\<Space>"
 
+let g:which_key_centered = 0
 let g:which_key_use_floating_win = 0
 let g:git_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 
@@ -95,7 +96,7 @@ let g:which_key_map.f = {
       \ 'name' : 'file >>' ,
       \ 'f' : [':call call("g:Current_File_Proj", [])'         , 'find files here'],
       \ 'w' : [':call SearchForWord()'                         , 'find word'],
-      \ 's' : [':w'                                            , 'save'],
+      \ 's' : [':update'                                       , 'save'],
       \ 'g' : [':GFiles?'                                      , 'git files changes'],
       \ 'c' : {
             \ 'name': 'copy >>',
@@ -156,7 +157,7 @@ let g:which_key_map.g = {
     \ 'l'       : [':Git log'                             , 'log'],
     \ 'w'       : [':Gwrite'                              , 'write-add'],
     \ 'p'       : [':Git --no-pager push origin Head'     , 'push'],
-    \ 'P'       : [':Git --no-pager fetch origin master'  , 'pull'],
+    \ 'P'       : [':Git --no-pager pull origin master'  , 'pull'],
     \ 'L'       : [':FloatermNew lazygit'                 , 'lazygit'],
     \}
 
@@ -224,8 +225,7 @@ let g:which_key_map.S = [':Colors'             , 'scheme']
 " call which_key#register('<Space>', "g:which_key_map")
 
 
-
 autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 set timeoutlen=500

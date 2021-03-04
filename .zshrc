@@ -16,7 +16,7 @@ export FZF_DEFAULT_COMMAND="rg --hidden --files --follow -g '!{.git/*,node_modul
 export BAT_THEME="base16"
 export BROWSER=brave
 export EDITOR=nvim
-export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin
+export PATH=$PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin/:$HOME/go/bin
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
@@ -28,6 +28,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="cloud"
 
 if [[ `tty` =~ tty ]]; then
     ZSH_THEME="avit"

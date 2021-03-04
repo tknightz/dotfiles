@@ -15,8 +15,6 @@
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
-let g:mapleader = ','
-
 " Vim-javascript
 " let g:javascript_plugin_jsdoc = 1
 " set conceallevel=1
@@ -82,8 +80,6 @@ vmap <C-_> <Plug>Commentary
 
 " Map Y to yank until end of line
 nmap <S-y> y$
-
-nmap ;p :AddProject<CR>
 
 nmap cv "wyiw:%s/\<<C-r>w\>//g<left><left>
 nmap <expr> cl &ft!='python' ? '"wyiwgd[{V%:s/\<<C-r>w\>//g<left><left>' : '"wyiw?def<cr>jVNk:s/\<<C-r>w\>//g<left><left>'

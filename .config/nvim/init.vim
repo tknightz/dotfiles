@@ -17,6 +17,7 @@
 
 
 filetype off                  " required
+let g:polyglot_disabled = ['vue', 'coffee-script']
 
 call plug#begin('~/.vim/plugged')
 
@@ -26,12 +27,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'gko/vim-coloresque'
+Plug 'gko/vim-coloresque', {'for': ['html', 'css', 'javascript']}
 Plug 'sheerun/vim-polyglot'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'pacokwon/onedarkpaco.vim'
+" Plug 'joshdick/onedark.vim'
 
 " Productivity
-Plug 'jceb/vim-orgmode'
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
@@ -49,10 +51,17 @@ Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 Plug 'markonm/traces.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'pechorin/any-jump.vim', {'on': 'AnyJump'}
+Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+
+Plug 'SirVer/ultisnips', { 'for': 'vue' }
+Plug 'honza/vim-snippets', { 'for': 'vue'}
 " Plug 'preservim/tagbar'
 " Plug 'liuchengxu/vista.vim'
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-notes'
+" Plug 'xolox/vim-misc'
 
 
 " Plugin for project manager
@@ -61,12 +70,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tknightz/projectile.vim'
+Plug 'tknightz/ikolor.vim'
 
 " Plugin for web-mode
-Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'scss']}
+Plug 'mattn/emmet-vim', {'for': ['html', 'css','scss']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'peitalin/vim-jsx-typescript', {'for': 'javascript'}
 Plug 'turbio/bracey.vim', {'for': 'html'}
+Plug 'posva/vim-vue'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf'
@@ -117,7 +128,18 @@ filetype plugin indent on    " required
 
 if has("syntax")
   set termguicolors
+  " let ayucolor="mirage"
+  " colo ayu
   " colo palenight
+  " let g:material_terminal_italics = 1
+  " let g:material_theme_style = 'darker'
+  " let g:tokyonight_style = 'night'
+  " let g:tokyonight_enable_italic = 1
+  " colo tokyonight
+  let g:ikolor_transparent = 1
+  colo ikolor
+  " colo onedarkpaco
+  " colo material
   syntax on
 endif
 
@@ -187,11 +209,12 @@ endif
 if filereadable($HOME . "/.config/nvim/override_map.vim")
     source $HOME/.config/nvim/override_map.vim
 endif
+
 " -------------------- Sources Ground ---------------------
 " Source a global configuration file if available
 " if filereadable("/etc/vim/vimrc.local")
 "   source /etc/vim/vimrc.local
 " endif
-if filereadable($HOME . "/.config/nvim/mycolo.vim")
-    source $HOME/.config/nvim/mycolo.vim
-endif
+" if filereadable($HOME . "/.config/nvim/mycolo.vim")
+"     source $HOME/.config/nvim/mycolo.vim
+" endif

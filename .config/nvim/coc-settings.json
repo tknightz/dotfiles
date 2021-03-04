@@ -31,11 +31,12 @@
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
   "prettier.parser": "none",
-  "__coc.preferences.formatOnSaveFiletypes": [
+  "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "python",
     "typescript",
     "coffescript",
     "php"
-  ]
+  ],
+  "clangd.path": "/home/tulen/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
 }
