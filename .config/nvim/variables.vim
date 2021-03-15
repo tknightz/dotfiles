@@ -17,7 +17,7 @@
 
 
 
-" Config for vim-go
+"=============== Config for vim-go ==================
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -33,19 +33,19 @@ let g:go_fmt_command = "goimports"
 
 
 
-" Config git blame line
+"=============== Config git blame line ==================
 let g:blameLineVirtualTextHighlight = 'Comment'
 let g:blameLineVirtualTextPrefix = '  >> '
 let g:blameLineGitFormat = '  a.k.a %an,  : %s,  : %ar'
 
 
-" Config git guiter
+"=============== Config git guiter ==================
 highlight GitGutterAdd    guifg=#40ff73 gui=bold ctermfg=2
 highlight GitGutterChange guifg=#d3ff0f gui=bold ctermfg=226
 highlight GitGutterDelete guifg=#d90000 gui=bold ctermfg=1
 
 
-" Config utilsnipet
+"=============== Config utilsnipet ==================
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-p>"
 let g:UltiSnipsJumpBackwardTrigger="<c-n>"
@@ -53,14 +53,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-n>"
 
 
 
-" Config cursor and font italic for tmux
-set t_ZH=[3m
-set t_ZR=[23m
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-
-" Config airline variables (powerline 100% vimscript)
+"=============== Config airline variables ==================
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -74,15 +67,15 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_snazzy'
-
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
-
 " let g:airline_section_c = '%{expand("%:t")}'
-let g:airline_section_y = ''
 let g:airline_section_c = ' '
+let g:airline_section_y = ''
 
-"Config fuzzy variables
+
+
+" ========= Config fuzzy variables =====================
 let g:fzf_preview_highlighter = "highlight -O xterm256 --line-number --style rdark --force"
 " let g:fzf_preview_line_highlight = '\x1b[101m'
 let g:fzf_preview_line_highlight = '\x1b[48;2;80;80;80m'
@@ -102,7 +95,6 @@ let g:fzf_colors = {
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" let g:table_mode_header_fillchar='='
 " let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
 
 
@@ -110,7 +102,7 @@ let g:fzf_colors = {
 "Config lazygit
 command! -nargs=1 Prettier :silent CocCommand prettier.formatFile
 
-" Config ale linter
+"=============== Config ale linter ==================
 let g:ale_linters = {
 \ 'javascript': ['eslint', 'tsserver'],
 \ 'python': ['flake8']
@@ -130,10 +122,12 @@ let g:ale_echo_msg_format = '%severity% : %s'
 let g:ale_disable_lsp = 1
 
 
-" Config table mode
+"=============== Config table mode ==================
 let g:table_mode_corner_corner='+'
 
-" Config emmet
+
+
+"=============== Config emmet ==================
 let g:user_emmet_mode='iv'
 let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall 
@@ -143,7 +137,7 @@ let g:user_emmet_expandabbr_key='<Tab>'
 autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
-" Confing vim markdown preview
+"=============== Config vim markdown preview ==================
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_browser = "brave"
 let g:instant_markdown_port = 6969
@@ -181,9 +175,13 @@ set undodir=~/.vim/undo
 set completefunc=emoji#complete
 set formatoptions=tcrq
 set signcolumn=yes
+set t_ZH=[3m
+set t_ZR=[23m
 " set smartindent
 
-" For better Vietnamese typing
+"=============== Config for tmux ==================
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 if exists('$TMUX')
     " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
     let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[5 q\<Esc>\\"
@@ -194,9 +192,8 @@ else
     let &t_SI = "\<Esc>[5 q"
     let &t_SR = "\<Esc>[4 q"
     let &t_EI = "\<Esc>[1 q"
-
     autocmd VimLeave * silent !echo -ne "\033[0 q"
-endi
+endif
 
 " auto jump to last edited position.
 autocmd BufReadPost * silent! normal! g`"zv 

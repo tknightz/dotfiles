@@ -100,3 +100,15 @@ augroup IBusHandler
 	autocmd InsertLeave * silent call IBusOff()
 augroup END
 
+
+function! CompileScss()
+  let current_file = expand('%')
+  let css_file = substitute(current_file, 'scss', 'css', 'g')
+  " exe '!npx node-sass '.current_file.' '.css_file.' -q'
+  let command_shell = 'npx node-sass '.current_file.' '.css_file.' -q' 
+  :call jobstart(command_shell)
+endfunction
+
+command CompileScss call CompileScss()
+
+au BufWritePost *.scss call CompileScss()

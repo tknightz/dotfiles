@@ -38,7 +38,6 @@ function! SearchForWord()
 endfunction
 
 " Fugitive improvement
-
 function! Get_Branch_Name(...)
   let branch_name = a:1
   silent exec ":Git checkout ".branch_name
