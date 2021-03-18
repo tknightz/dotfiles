@@ -16,6 +16,9 @@
 "     You can customize it to solve your problems.
 
 
+if has("xclip")
+    set clipboard=unnamedplus
+endif
 
 "=============== Config for vim-go ==================
 let g:go_highlight_build_constraints = 1
@@ -95,7 +98,7 @@ let g:fzf_colors = {
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
+let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
 
 
 
@@ -169,6 +172,7 @@ set t_Co=256
 
 set cursorline
 set updatetime=300
+set lazyredraw
 set hidden
 set undofile
 set undodir=~/.vim/undo

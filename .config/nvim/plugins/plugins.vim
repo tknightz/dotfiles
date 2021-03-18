@@ -15,25 +15,8 @@
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
-function! Expander()
-  let line   = getline(".")
-  let col    = col(".")
-  let first  = line[col-2]
-  let second = line[col-1]
-  let third  = line[col]
+let $CURRENT_DIR = fnamemodify(expand('<sfile>'), ':p:h')
 
-  if first == ">"
-    if second == "<" && third == "/"
-      return "\<CR>\<C-o>==\<C-o>O"
-      " return "\<CR>\<ESC>O"
-    else
-      return "\<CR>"
-    endif
-  else
-    return "\<CR>"
-  endif
-endfunction
-
-:imap <expr> <CR> Expander()
-
-nnoremap <S-y> y$
+source $CURRENT_DIR/_preload/preload.vim
+source $CURRENT_DIR/_manage.vim
+source $CURRENT_DIR/_postload/postload.vim

@@ -15,11 +15,10 @@
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
-let $CONFiG_DIR = expand('$HOME/.config/nvim')
+let $CURRENT_DIR = fnamemodify(expand('<sfile>'), ':p:h')
 
-source $CONFiG_DIR/plugins/plugins.vim
-source $CONFiG_DIR/variables/variables.vim
-source $CONFiG_DIR/mappings/mappings.vim
-source $CONFiG_DIR/others/others.vim
-source $CONFiG_DIR/functions/functions.vim
-source $CONFiG_DIR/autocmd/autocmd.vim
+for config in split(expand('$CURRENT_DIR/_*.vim'), '\n')
+  if filereadable(config)
+    exe 'source' config
+  endif
+endfor

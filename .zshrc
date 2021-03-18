@@ -12,7 +12,8 @@
 # Path to your oh-my-zsh installation.
 # export TERM='screen-256color'
 export ZSH="$HOME/.oh-my-zsh"
-export FZF_DEFAULT_COMMAND="rg --hidden --files --follow -g '!{.git/*,node_modules/*}'"
+export FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
+alias rg="rg --hidden -g '!{.git/*,node_modules/*}'"
 export BAT_THEME="base16"
 export BROWSER=brave
 export EDITOR=nvim

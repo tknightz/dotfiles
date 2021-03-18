@@ -83,7 +83,7 @@ let g:which_key_map.F = {
 
 let g:which_key_map.b = {
       \ 'name' : 'buffer >>' ,
-      \ 'd' : [':BD'       , 'delete-buffer'],
+      \ 'd' : [':BD'        , 'delete-buffer'],
       \ 'f' : [':bfirst'    , 'first-buffer'],
       \ 'h' : [':Startify'  , 'home-buffer'],
       \ 'l' : [':blast'     , 'last-buffer'],
@@ -157,7 +157,7 @@ let g:which_key_map.g = {
     \ 'l'       : [':Git log'                             , 'log'],
     \ 'w'       : [':Gwrite'                              , 'write-add'],
     \ 'p'       : [':Git --no-pager push origin Head'     , 'push'],
-    \ 'P'       : [':Git --no-pager pull origin master'  , 'pull'],
+    \ 'P'       : [':Git --no-pager pull origin master'   , 'pull'],
     \ 'L'       : [':FloatermNew lazygit'                 , 'lazygit'],
     \}
 
@@ -172,9 +172,9 @@ let g:which_key_map.p = {
 
 let g:which_key_map.P = {
   \ 'name' : 'Project >>',
-  \ 'a'  : [':silent exec ":call g:Add_Project()"'     , 'add new project'],
-  \ 'l'  : [':silent exec ":call g:List_Projects()"'   , 'list projects'],
-  \ 'r'  : [':silent exec ":call g:Remove_Project()"'  , 'remove project'],
+  \ 'a'  : [':call call("g:Add_Project", [])'          , 'add new project'],
+  \ 'l'  : [':call call("g:List_Projects", [])'        , 'list projects'],
+  \ 'r'  : [':call call("g:Remove_Project", [])'       , 'remove project'],
   \ 'f'  : [':call call("g:Find_In_Project", [])'      , 'find files in project'],
   \}
 
@@ -191,14 +191,24 @@ let g:which_key_map.r = [':Rg'      , 'grep-search']
 
 let g:which_key_map.s = {
     \ 'name'    : 'setting >>',
-    \ 'V'       : [':e ~/.vimrc'                                 , 'vimrc' ],
-    \ 'i'       : [':e ~/.config/nvim/init.vim'                  , 'init.vim' ],
-    \ 'w'       : [':e ~/.config/nvim/which_key.vim'             , 'which_key' ],
-    \ 'c'       : [':e ~/.config/nvim/cocnvim_config.vim'        , 'cocnvim' ],
-    \ 'v'       : [':e ~/.config/nvim/variables.vim'             , 'variables' ],
-    \ 'm'       : [':e ~/.config/nvim/mapping.vim'               , 'mapping' ],
-    \ 'f'       : [':e ~/.config/nvim/custom_func.vim'           , 'function' ],
-    \ 'p'       : [':e ~/.config/nvim/projectile.vim'            , 'projectile' ],
+    \ 'V'       : [':e ~/.vimrc'                                        , 'vimrc' ],
+    \ 'i'       : [':e ~/.config/nvim/init.vim'                         , 'init.vim' ],
+    \ 'w'       : [':e ~/.config/nvim/others/_whichkey.vim'             , 'which_key' ],
+    \ 'C'       : [':e ~/.config/nvim/others/_cocnvim.vim'              , 'cocnvim' ],
+    \ 'c'       : [':e ~/.config/nvim/plugins/_postload/_colors.vim'    , 'colors' ],
+    \ 'v'       : [':e ~/.config/nvim/variables/variables.vim'          , 'variables' ],
+    \ 'p'       : [':e ~/.config/nvim/plugins/_manage.vim'              , 'plugins' ],
+    \ 'f' : {
+        \ 'name' : 'functions >>',
+        \ 'g'       : [':e ~/.config/nvim/functions/_git.vim'           , 'git' ],
+        \ 'e'       : [':e ~/.config/nvim/functions/_editor.vim'        , 'editor' ],
+        \ 'k'       : [':e ~/.config/nvim/functions/_kits.vim'          , 'kits' ],
+    \},
+    \ 'm' : {
+        \ 'name' : 'mappings >>',
+        \ 'w'       : [':e ~/.config/nvim/mappings/_windows.vim'       , 'windows' ],
+        \ 'e'       : [':e ~/.config/nvim/mappings/_editor.vim'        , 'editor' ],
+    \},
     \}
 
 let g:which_key_map.h = { 

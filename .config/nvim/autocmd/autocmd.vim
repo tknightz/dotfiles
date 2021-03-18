@@ -15,11 +15,10 @@
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
-let $CONFiG_DIR = expand('$HOME/.config/nvim')
 
-source $CONFiG_DIR/plugins/plugins.vim
-source $CONFiG_DIR/variables/variables.vim
-source $CONFiG_DIR/mappings/mappings.vim
-source $CONFiG_DIR/others/others.vim
-source $CONFiG_DIR/functions/functions.vim
-source $CONFiG_DIR/autocmd/autocmd.vim
+" Scss auto compile
+command CompileScss call CompileScss()
+au BufWritePost *.scss call CompileScss()
+
+" nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
