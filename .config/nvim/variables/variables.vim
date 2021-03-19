@@ -134,10 +134,10 @@ let g:table_mode_corner_corner='+'
 let g:user_emmet_mode='iv'
 let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall 
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key='<C-y>'
 
-let g:user_emmet_expandabbr_key='<Tab>'
-autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" let g:user_emmet_expandabbr_key='<Tab>'
+" autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 "=============== Config vim markdown preview ==================
