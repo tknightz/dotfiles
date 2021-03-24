@@ -1,17 +1,17 @@
-"     .___________. __  ___                                 
-"     |           ||  |/  /                                 
-"     `---|  |----`|  '  /                                  
-"         |  |     |    <                                   
-"         |  |     |  .  \                                  
-"         |__|     |__|\__\                                 
-"       ______   ______   .__   __.  _______  __    _______ 
+"     .___________. __  ___
+"     |           ||  |/  /
+"     `---|  |----`|  '  /
+"         |  |     |    <
+"         |  |     |  .  \
+"         |__|     |__|\__\
+"       ______   ______   .__   __.  _______  __    _______
 "      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
-"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
-"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ | 
-"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| | 
-"      \______| \______/  |__| \__| |__|     |__|  \______| 
-"                                                           
-"     
+"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __
+"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ |
+"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| |
+"      \______| \______/  |__| \__| |__|     |__|  \______|
+"
+"
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
@@ -72,8 +72,8 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_snazzy'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
-" let g:airline_section_c = '%{expand("%:t")}'
-let g:airline_section_c = ' '
+let g:airline_section_c = '%{expand("%:t")}'
+" let g:airline_section_c = ' '
 let g:airline_section_y = ''
 
 
@@ -117,9 +117,9 @@ let g:ale_fixers = {
 let g:ale_completion_autoimport = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_python_flake8_options="--ignore=E501"
-let g:ale_sign_error = ' ' 
+let g:ale_sign_error = ' '
 let g:ale_sign_warning = ' '
-let g:ale_echo_msg_error_str = ' ' 
+let g:ale_echo_msg_error_str = ' '
 let g:ale_echo_msg_warning_str = ' '
 let g:ale_echo_msg_format = '%severity% : %s'
 let g:ale_disable_lsp = 1
@@ -133,11 +133,11 @@ let g:table_mode_corner_corner='+'
 "=============== Config emmet ==================
 let g:user_emmet_mode='iv'
 let g:user_emmet_install_global=0
-autocmd FileType html,css EmmetInstall 
-let g:user_emmet_leader_key='<C-y>'
+autocmd FileType html,css EmmetInstall
+" let g:user_emmet_leader_key='<C-e>'
 
 " let g:user_emmet_expandabbr_key='<Tab>'
-" autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 "=============== Config vim markdown preview ==================
@@ -179,6 +179,10 @@ set undodir=~/.vim/undo
 set completefunc=emoji#complete
 set formatoptions=tcrq
 set signcolumn=yes
+set splitbelow
+set shiftwidth=2
+set tabstop=2
+set splitright
 set t_ZH=[3m
 set t_ZR=[23m
 " set smartindent
@@ -200,4 +204,4 @@ else
 endif
 
 " auto jump to last edited position.
-autocmd BufReadPost * silent! normal! g`"zv 
+autocmd BufReadPost * silent! normal! g`"zv

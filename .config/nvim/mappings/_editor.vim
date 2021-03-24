@@ -17,3 +17,17 @@ nmap <Leader>h :nohls<CR>
 " Map Ctrl + / to comment code
 nmap <C-_> <Plug>CommentaryLine
 vmap <C-_> <Plug>Commentary
+
+augroup terminal_settings
+  autocmd!
+  " autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
+  autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
+  autocmd TermOpen * startinsert
+  autocmd TermClose term://*
+      \ if exists('g:compile_mode') && (g:compile_mode == 1) |
+      \   let g:compile_mode = 0 |
+      \ elseif (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
+      \   call nvim_input('<CR>')  |
+      \ endif
+augroup END

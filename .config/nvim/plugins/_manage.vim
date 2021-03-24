@@ -1,17 +1,17 @@
-"     .___________. __  ___                                 
-"     |           ||  |/  /                                 
-"     `---|  |----`|  '  /                                  
-"         |  |     |    <                                   
-"         |  |     |  .  \                                  
-"         |__|     |__|\__\                                 
-"       ______   ______   .__   __.  _______  __    _______ 
+"     .___________. __  ___
+"     |           ||  |/  /
+"     `---|  |----`|  '  /
+"         |  |     |    <
+"         |  |     |  .  \
+"         |__|     |__|\__\
+"       ______   ______   .__   __.  _______  __    _______
 "      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
-"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
-"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ | 
-"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| | 
-"      \______| \______/  |__| \__| |__|     |__|  \______| 
-"                                                           
-"     
+"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __
+"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ |
+"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| |
+"      \______| \______/  |__| \__| |__|     |__|  \______|
+"
+"
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
@@ -38,7 +38,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'voldikss/vim-floaterm'
 Plug 'haya14busa/is.vim'
-" Plug 'jiangmiao/auto-pairs'
+Plug 'vimlab/split-term.vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -51,7 +51,8 @@ Plug 'SirVer/ultisnips', { 'for': 'vue' }
 Plug 'honza/vim-snippets', { 'for': 'vue'}
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-
+Plug 'tknightz/autobrackets.vim'
+Plug 'tknightz/executor.vim'
 
 
 
@@ -72,7 +73,7 @@ Plug 'posva/vim-vue'
 
 
 " ---------------- Python ----------------------
-Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+" Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 
 
 
