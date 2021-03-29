@@ -12,8 +12,8 @@
 # Path to your oh-my-zsh installation.
 # export TERM='screen-256color'
 export ZSH="$HOME/.oh-my-zsh"
-export FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
-alias rg="rg --hidden -g '!{.git/*,node_modules/*}'"
+# export FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
+# alias rg="rg --hidden -g '!{.git/*,node_modules/*}'"
 export BAT_THEME="base16"
 export BROWSER=brave
 export EDITOR=nvim
@@ -77,7 +77,7 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=green
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=black
 POWERLEVEL9K_COMMAND_BACKGROUND_JOBS_BACKGROUND=red
 POWERLEVEL9K_COMMAND_BACKGROUND_JOBS_FOREGROUND=115
-POWERLEVEL9K_TIME_ICON= 
+POWERLEVEL9K_TIME_ICON=
 POWERLEVEL9K_TIME_FORMAT='%D{%I:%M}'
 POWERLEVEL9K_IP_BACKGROUND=006
 POWERLEVEL9K_TIME_BACKGROUND=204

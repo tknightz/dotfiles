@@ -54,8 +54,8 @@ let g:which_key_map.w = {
       \ 'v' : ['<C-W>v'     , 'split-window-below'    ],
       \ 't' : {
         \ 'name'    : 'transform >>',
-        \ 'h'       : [',th'       , 'swap-window-vertical' ],
-        \ 'k'       : [',tk'       , 'swap-window-horizontal' ],
+        \ 'h'       : ['<C-W>tH'       , 'swap-window-vertical' ],
+        \ 'k'       : ['<C-W>tK'       , 'swap-window-horizontal' ],
         \},
       \ 'i' : [':Windows'    , 'fzf-window'],
       \ }
@@ -90,6 +90,7 @@ let g:which_key_map.b = {
       \ 'n' : [':bnext'     , 'next-buffer'],
       \ 'p' : [':bprevious' , 'previous-buffer'],
       \ '/' : [':Buffers'   , 'fzf-buffer'],
+      \ 'i' : [':Buffers'   , 'IBuffer'],
       \ }
 
 let g:which_key_map.f = {
@@ -221,7 +222,7 @@ let g:which_key_map.h = {
 
 let g:which_key_map.q = [':q'                  , 'quit']
 
-let g:which_key_map.n = ['<C-n>'               , 'nerdtree']
+let g:which_key_map.n = [':NERDTreeToggle'     , 'nerdtree']
 
 let g:which_key_map['?'] = [':help'            , 'help']
 

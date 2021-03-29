@@ -40,11 +40,11 @@
   ],
   "clangd.path": "/home/tulen/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
   "suggest.completionItemKindLabels": {
-    "variable": "\uf71b",
-    "constant": "\uf8ff",
-    "struct": "\ufb44",
-    "class": "\uf0e8",
-    "interface": "\ufa52",
+    "variable": " ",
+    "constant": " ",
+    "struct": " ",
+    "class": " ",
+    "interface": " ",
     "text": "\ue612",
     "enum": "\uf435",
     "enumMember": "\uf02b",
@@ -61,6 +61,7 @@
     "operator": "\uf915",
     "reference": "\uf87a",
     "typeParameter": "\uf278",
+    "function": "",
     "default": "\uf29c"
   }
 }

@@ -25,11 +25,11 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " -------------- Theme and appearance ----------
+Plug 'tknightz/ikolor.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
-Plug 'tknightz/ikolor.vim'
 
 
 " -------------- Productivity -----------------
@@ -42,7 +42,8 @@ Plug 'vimlab/split-term.vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-speeddating'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'qpkorr/vim-bufkill'
@@ -53,6 +54,8 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tknightz/autobrackets.vim'
 Plug 'tknightz/executor.vim'
+Plug 'mg979/vim-visual-multi'
+" Plug 'psliwka/vim-smoothie'
 
 
 
@@ -68,7 +71,8 @@ Plug 'tknightz/projectile.vim'
 Plug 'mattn/emmet-vim', {'for': ['html', 'css','scss']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'peitalin/vim-jsx-typescript', {'for': 'javascript'}
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue', {'for': 'vue'}
+Plug 'gko/vim-coloresque', {'for': ['html', 'css', 'scss', 'vim']}
 " Plug 'turbio/bracey.vim', {'for': 'html'}
 
 

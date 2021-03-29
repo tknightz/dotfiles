@@ -20,6 +20,10 @@ if has("xclip")
     set clipboard=unnamedplus
 endif
 
+let $FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
+
+let g:VM_set_statusline = 0
+
 "=============== Config for vim-go ==================
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -66,10 +70,11 @@ let g:airline#extensions#keymap#enabled = 0
 let g:airline_symbols.dirty='  '
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16_snazzy'
+let g:airline_theme='ikolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline_section_c = '%{expand("%:t")}'
@@ -176,7 +181,7 @@ set lazyredraw
 set hidden
 set undofile
 set undodir=~/.vim/undo
-set completefunc=emoji#complete
+" set completefunc=emoji#complete
 set formatoptions=tcrq
 set signcolumn=yes
 set splitbelow
@@ -186,6 +191,7 @@ set splitright
 set t_ZH=[3m
 set t_ZR=[23m
 " set smartindent
+let &fcs='eob: '
 
 "=============== Config for tmux ==================
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"

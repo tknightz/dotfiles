@@ -1,17 +1,17 @@
-"     .___________. __  ___                                 
-"     |           ||  |/  /                                 
-"     `---|  |----`|  '  /                                  
-"         |  |     |    <                                   
-"         |  |     |  .  \                                  
-"         |__|     |__|\__\                                 
-"       ______   ______   .__   __.  _______  __    _______ 
+"     .___________. __  ___
+"     |           ||  |/  /
+"     `---|  |----`|  '  /
+"         |  |     |    <
+"         |  |     |  .  \
+"         |__|     |__|\__\
+"       ______   ______   .__   __.  _______  __    _______
 "      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
-"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
-"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ | 
-"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| | 
-"      \______| \______/  |__| \__| |__|     |__|  \______| 
-"                                                           
-"     
+"     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __
+"     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ |
+"     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| |
+"      \______| \______/  |__| \__| |__|     |__|  \______|
+"
+"
 "     This is my personal configurations for vim, nvim.
 "     You can customize it to solve your problems.
 
@@ -81,6 +81,20 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nmap <silent> <C-c> <Plug>(coc-cursors-position)
+nmap <silent> <C-d> <Plug>(coc-cursors-word)
+xmap <silent> <C-d> <Plug>(coc-cursors-range)
+" use normal command like `<leader>xi(`
+nmap <leader>x  <Plug>(coc-cursors-operator)
+
+nmap <expr> <silent> <C-d> <SID>select_current_word()
+function! s:select_current_word()
+  if !get(b:, 'coc_cursors_activated', 0)
+    return "\<Plug>(coc-cursors-word)"
+  endif
+  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+endfunc
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
