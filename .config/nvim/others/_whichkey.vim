@@ -196,6 +196,7 @@ let g:which_key_map.s = {
     \ 'name'    : 'setting >>',
     \ 'V'       : [':e ~/.vimrc'                                        , 'vimrc' ],
     \ 'i'       : [':e ~/.config/nvim/init.vim'                         , 'init.vim' ],
+    \ 'a'       : [':e ~/.config/nvim/autocmd/autocmd.vim'              , 'autocmd.vim' ],
     \ 'w'       : [':e ~/.config/nvim/others/_whichkey.vim'             , 'which_key' ],
     \ 'C'       : [':e ~/.config/nvim/others/_cocnvim.vim'              , 'cocnvim' ],
     \ 'c'       : [':e ~/.config/nvim/plugins/_postload/_colors.vim'    , 'colors' ],
@@ -220,7 +221,7 @@ let g:which_key_map.h = {
   \ 'e'         : [':MundoToggle'      , 'edit'],
   \}
 
-let g:which_key_map.q = [':q'                  , 'quit']
+let g:which_key_map.q = [':QuitVim'  , 'quit']
 
 let g:which_key_map.n = [':NERDTreeToggle'     , 'nerdtree']
 

@@ -6,7 +6,6 @@
   "python.linting.flake8Enabled": true,
   "python.jediEnabled": false,
   "python.jediPath": "/home/tknightz/.local/lib/python3.8/site-packages/",
-  "eslint.run": "onType",
   "python.linting.flake8Args": [
     "--disable=C0301",
     "--load-plugin",
@@ -21,16 +20,7 @@
     "html",
     "markdown"
   ],
-  "eslint.options": { "configFile": "/home/tknightz/.eslintrc.json" },
   "coc.preferences.messageLevel": "error",
-  "prettier.singleQuote": true,
-  "prettier.printWidth": 100,
-  "prettier.trailingComma": "es5",
-  "prettier.semi": false,
-  "prettier.bracketSpacing": true,
-  "prettier.tabWidth": 2,
-  "prettier.useTabs": false,
-  "prettier.parser": "none",
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "python",

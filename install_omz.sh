@@ -84,8 +84,8 @@ setup_ohmyzsh() {
 
 	command_exists git || {
 		error "git is not installed"
-		exit 1
-	}
+			exit 1
+		}
 
 	if [ "$OSTYPE" = cygwin ] && git --version | grep -q msysgit; then
 		error "Windows/MSYS Git is not supported on Cygwin"
@@ -99,8 +99,8 @@ setup_ohmyzsh() {
 		-c receive.fsck.zeroPaddedFilemode=ignore \
 		--depth=1 --branch "$BRANCH" "$REMOTE" "$ZSH" || {
 		error "git clone of oh-my-zsh repo failed"
-		exit 1
-	}
+			exit 1
+		}
 
 	echo
 }
@@ -110,7 +110,7 @@ setup_zshrc() {
 	# with datestamp of installation that moved them aside, so we never actually
 	# destroy a user's original zshrc
 	echo "${BLUE}Setup zshrc config..${RESET}"
-    # Install zsh syntax highlight)
+	# Install zsh syntax highlight)
 
 	echo "${BLUE}Install zsh-syntax-highlight...${RESET}"
 
@@ -130,7 +130,7 @@ setup_zshrc() {
 	echo "${BLUE}Copying zshrc config file...${RESET}"
 
 	ln -s $PWD/.zshrc ~/.zshrc
-    
+
 	echo "${GREEN}Done setup zshrc!${RESET}"
 	# Must use this exact name so uninstall.sh can find it
 	# OLD_ZSHRC=~/.zshrc.pre-oh-my-zsh
@@ -159,11 +159,11 @@ setup_zshrc() {
 	# echo "${GREEN}Using the Oh My Zsh template file and adding it to ~/.zshrc.${RESET}"
 
 	# sed "/^export ZSH=/ c\\
-# export ZSH=\"$ZSH\"
-# " "$# ZSH/templates/zshrc.zsh-template" > ~/.zshrc-omztemp
-# 	# mv -f ~/.zshrc-omztemp ~/.zshrc
-# 
-# 	echo
+	# export ZSH=\"$ZSH\"
+	# " "$# ZSH/templates/zshrc.zsh-template" > ~/.zshrc-omztemp
+	# 	# mv -f ~/.zshrc-omztemp ~/.zshrc
+	#
+	# 	echo
 }
 
 setup_shell() {
@@ -274,20 +274,20 @@ main() {
 			You'll need to remove '$ZSH' if you want to reinstall.
 		EOF
 		exit 1
-	fi
+			fi
 
-	setup_ohmyzsh
-	setup_zshrc
-	setup_shell
+			setup_ohmyzsh
+			setup_zshrc
+			setup_shell
 
-	printf "$GREEN"
-	cat <<-'EOF'
-		         __                                     __
-		  ____  / /_     ____ ___  __  __   ____  _____/ /_
+			printf "$GREEN"
+			cat <<-'EOF'
+						 __                                     __
+			____  / /_     ____ ___  __  __   ____  _____/ /_
 		 / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \
 		/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / /
 		\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/
-		                        /____/                       ....is now installed!
+														/____/                       ....is now installed!
 
 
 		Please look over the ~/.zshrc file to select plugins, themes, and options.

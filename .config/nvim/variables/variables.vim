@@ -142,7 +142,7 @@ autocmd FileType html,css EmmetInstall
 " let g:user_emmet_leader_key='<C-e>'
 
 " let g:user_emmet_expandabbr_key='<Tab>'
-autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 "=============== Config vim markdown preview ==================

@@ -18,3 +18,16 @@ endfunction
 
 command! -nargs=* -complete=file ReadRange call s:ReadRange(<f-args>)
 :cnoreabbrev rr ReadRange
+
+
+
+function! g:QuitVim()
+  let bufnr = bufnr()
+  if exists("g:executor_bufnr") && bufnr == g:executor_bufnr
+    exec ':bd!'
+  else
+    exec ':q'
+  endif
+endfunction
+
+command! QuitVim call g:QuitVim()

@@ -25,13 +25,13 @@ TEST=`cat /etc/os-release | grep arch`
 # Check if arch or debian
 
 if [ $TEST ]
-then 
-    echo "${BLUE} Detected OS :${RESET} ${GREEN}Arch${RESET}."
-  	sudo pacman -S git vim vifm neovim bat ripgrep -y
+then
+	echo "${BLUE} Detected OS :${RESET} ${GREEN}Arch${RESET}."
+	sudo pacman -S git vim vifm neovim bat ripgrep -y
 else
-    echo "${BLUE} Detected OS :${RESET} ${GREEN}Ubuntu${RESET}."
-    sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt install git vim vifm neovim -y
+	echo "${BLUE} Detected OS :${RESET} ${GREEN}Ubuntu${RESET}."
+	sudo add-apt-repository ppa:neovim-ppa/stable
+	sudo apt install git vim vifm neovim -y
 fi
 
 # Install Vim-plug
@@ -47,11 +47,12 @@ echo "${BLUE}Configuring...${RESET}"
 cp -r ./.config/* ~/.config
 cp .vimrc ~
 vim -c 'PlugInstall' \
-    -c 'qa'
+	-c 'qa'
+
 nvim -c 'PlugInstall' \
-    -c 'qa'
+	-c 'qa'
 
 echo "${BLUE}Installing Fonts...${RESET}"
 mkdir -p ~/.fonts
 cp ./Fonts/*.ttf ~/.fonts
-fc-cache -f -v
+	fc-cache -f -v
