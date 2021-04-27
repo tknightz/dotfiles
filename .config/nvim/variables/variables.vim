@@ -23,6 +23,46 @@ endif
 let $FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
 
 let g:VM_set_statusline = 0
+let g:csv_nomap_space = 1
+
+let g:python_highlight_all = 1
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+"=============== Config for lightline ==================
+let g:lightline = {
+      \ 'colorscheme': 'ikolor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'githunks', 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'githunks': 'Git_Get_Hunks'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ }
+" autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+set showtabline=2
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#show_number = 1
+let g:lightline#bufferline#number_map = {
+\ 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄',
+\ 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉'}
+
+
+"=============== Config for lsp ==================
+let g:lsp_diagnostics_enabled = 0
 
 "=============== Config for vim-go ==================
 let g:go_highlight_build_constraints = 1
@@ -77,7 +117,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='ikolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline_section_c = '%{expand("%:t")}'
+" let g:airline_section_c = ''
 " let g:airline_section_c = ' '
 let g:airline_section_y = ''
 
@@ -141,8 +181,8 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall
 " let g:user_emmet_leader_key='<C-e>'
 
-" let g:user_emmet_expandabbr_key='<Tab>'
-" autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_expandabbr_key='<Tab>'
+autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 "=============== Config vim markdown preview ==================

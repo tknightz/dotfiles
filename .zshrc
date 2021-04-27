@@ -1,6 +1,13 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
@@ -49,9 +56,9 @@ POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND=red
 POWERLEVEL9K_SSH_BACKGROUND=001
 POWERLEVEL9K_SSH_FOREGROUND=255
 POWERLEVEL9K_FOLDER_ICON=
-POWERLEVEL9K_FOLDER_BACKGROUND=204
-POWERLEVEL9K_DIR_BACKGROUND=204
-POWERLEVEL9K_DIR_FOREGROUND=255
+POWERLEVEL9K_FOLDER_BACKGROUND=
+POWERLEVEL9K_DIR_BACKGROUND=105
+POWERLEVEL9K_DIR_FOREGROUND=000
 POWERLEVEL9K_DIR_WRITABLE_BACKGROUND=black
 POWERLEVEL9K_DIR_WRITABLE_FOREGROUND=red
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND=black
@@ -95,10 +102,10 @@ POWERLEVEL9K_VI_MODE_OVERWRITE_BACKGROUND=red
 POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B2'
 POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0B0'
 # POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{red}'
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{red}'
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{green} %f'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon root_indicator ssh dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ip time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -245,6 +252,9 @@ else
     fi
 fi
 unset __conda_setup
-conda deactivate
+# conda deactivate
 # <<< conda initialize <<<
 
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

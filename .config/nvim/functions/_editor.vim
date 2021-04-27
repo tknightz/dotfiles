@@ -19,7 +19,26 @@ endfunction
 command! -nargs=* -complete=file ReadRange call s:ReadRange(<f-args>)
 :cnoreabbrev rr ReadRange
 
+function! Git_Get_Hunks()
 
+  let symbols = ['+', '-', '~']
+  let [added, modified, removed] = GitGutterGetHunkSummary()
+  let stats = [added, removed, modified]  " reorder
+  let hunkline = ''
+
+  let s:is_git_folder = FugitiveHead()
+  if !empty(s:is_git_folder)
+    for i in range(3)
+      let hunkline .= printf('%s%s ', symbols[i], stats[i])
+    endfor
+  endif
+
+  if !empty(hunkline)
+    let hunkline = printf('%s', hunkline[:-2])
+  endif
+
+  return hunkline
+endfunction
 
 function! g:QuitVim()
   let bufnr = bufnr()
@@ -31,3 +50,20 @@ function! g:QuitVim()
 endfunction
 
 command! QuitVim call g:QuitVim()
+
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))

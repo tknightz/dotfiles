@@ -236,10 +236,10 @@ let g:which_key_map.H = [':History:'           , 'history-command']
 
 let g:which_key_map.S = [':Colors'             , 'scheme']
 
-" call which_key#register('<Space>', "g:which_key_map")
+call which_key#register('<Space>', "g:which_key_map")
 
 
-autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+" autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-set timeoutlen=500
+set timeoutlen=1000

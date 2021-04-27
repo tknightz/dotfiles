@@ -24,20 +24,41 @@ au BufWritePost *.scss call CompileScss()
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 augroup docker_stuff
   autocmd! BufWritePre Dockerfile exe "%s/^\\(\\w*\\)/\\U\\1"
 augroup END
 
+function! Find_Previous_Word()
+  let col_num = col('.')
+  let row_num = line('.')
+  let keyword = ''
+  if col_num == 1
+    let row_num = row_num - 1
+    let col_num = col('$') - 1
+  endif
+
+  let idx_col = col_num
+  while getline(row_num)[idx_col] != ' ' && idx_col >= 0
+    let keyword = getline(row_num)[idx_col].keyword
+    let idx_col = idx_col - 1
+  endwhile
+  " let keyword = toupper(keyword)
+  return toupper(keyword)
+endfunction
+
+augroup sql_stuff
+augroup END
+
 
 " Don't jump cursor when saving file
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
+" function! <SID>StripTrailingWhitespaces()
+"     let l = line(".")
+"     let c = col(".")
+"     %s/\s\+$//e
+"     call cursor(l, c)
+" endfun
 
 augroup terminal_settings
   if has('nvim')
