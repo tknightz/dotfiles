@@ -71,6 +71,16 @@ let g:which_key_map.t = {
     \ 't' : [':call tablemode#Toggle'           , 'TableModeToggle'],
     \ }
 
+let g:which_key_map.d = {
+    \ 'name' : 'database >>',
+    \ 'a' : [':DBUIAddConnection'                       , 'Add new connection'],
+    \ 't' : [':DBUIToggle'                              , 'Toggle DBUI'],
+    \ 'f' : [':DBUIFindBuffer'                          , 'Find buffer'],
+    \ 'r' : [':DBUIRenameBuffer'                        , 'Rename buffer'],
+    \ 'l' : [':DBUILastQueryInfo'                       , 'Last query info'],
+    \ 'h' : [':DBUIHideNotifications'                   , 'Hide notifications'],
+    \ }
+
 let g:which_key_map.t.m = 'which_key_ignore'
 
 let g:which_key_map['!'] = { 'name': 'which_key_ignore' }
@@ -173,7 +183,11 @@ let g:which_key_map.p = {
 
 let g:which_key_map.P = {
   \ 'name' : 'Project >>',
-  \ 'a'  : [':call call("g:Add_Project", [])'          , 'add new project'],
+  \ 'a'  : {
+      \ 'name'  : 'add >>',
+      \ 'n'     : [':call call("g:Add_Project", [])'    , 'add new project'],
+      \ 'c'     : [':call call("g:Add_Current_Project", [])'   , 'add current project']
+  \},
   \ 'l'  : [':call call("g:List_Projects", [])'        , 'list projects'],
   \ 'r'  : [':call call("g:Remove_Project", [])'       , 'remove project'],
   \ 'f'  : [':call call("g:Find_In_Project", [])'      , 'find files in project'],

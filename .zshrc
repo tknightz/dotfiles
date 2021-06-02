@@ -19,7 +19,7 @@ fi
 # Path to your oh-my-zsh installation.
 # export TERM='screen-256color'
 export ZSH="$HOME/.oh-my-zsh"
-# export FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
+export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!{.git/*,node_modules/*}'"
 # alias rg="rg --hidden -g '!{.git/*,node_modules/*}'"
 export BAT_THEME="base16"
 export BROWSER=brave
@@ -30,6 +30,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
 '
+export LS_COLORS="$(vivid generate snazzy)"
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -74,7 +75,7 @@ POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=↑
 POWERLEVEL9K_VCS_COMMIT_ICON= $s
 POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-POWERLEVEL9K_STATUS_OK_BACKGROUND=
+POWERLEVEL9K_STATUS_OK_BACKGROUND=239
 POWERLEVEL9K_STATUS_OK_FOREGROUND=010
 POWERLEVEL9K_STATUS_ERROR_BACKGROUND=
 POWERLEVEL9K_STATUS_ERROR_FOREGROUND='red'
@@ -182,7 +183,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias vifm=vifmrun
 
-alias fzf="fzf -e -d '/' --with-nth=5"
+# alias fzf="fzf -e -d '/' --with-nth=5"
 
 function runc(){
     g++ $1 -o ${1%.*} && ./${1%.*}

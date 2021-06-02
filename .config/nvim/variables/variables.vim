@@ -20,7 +20,7 @@ if has("xclip")
     set clipboard=unnamedplus
 endif
 
-let $FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
+" let $FZF_DEFAULT_COMMAND="rg --hidden -g '!{.git/*,node_modules/*}'"
 
 let g:VM_set_statusline = 0
 let g:csv_nomap_space = 1
@@ -118,7 +118,6 @@ let g:airline_theme='ikolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
 " let g:airline_section_c = ''
-" let g:airline_section_c = ' '
 let g:airline_section_y = ''
 
 
@@ -143,7 +142,10 @@ let g:fzf_colors = {
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
+" - Popup window (center of the screen)
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+
+" let $FZF_DEFAULT_COMMAND = 'rg --hidden -l "" | fzf'
 
 
 
@@ -179,10 +181,10 @@ let g:table_mode_corner_corner='+'
 let g:user_emmet_mode='iv'
 let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall
-" let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_leader_key=','
 
-let g:user_emmet_expandabbr_key='<Tab>'
-autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" let g:user_emmet_expandabbr_key='<Tab>'
+" autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 "=============== Config vim markdown preview ==================
@@ -215,12 +217,13 @@ set t_Co=256
 " set smartcase
 " set mouse=a
 
-set cursorline
+" set cursorline
 set updatetime=300
 set lazyredraw
 set hidden
-set undofile
-set undodir=~/.vim/undo
+set nowrap
+" set undofile
+" set undodir=~/.vim/undo
 " set completefunc=emoji#complete
 set formatoptions=tcrq
 set signcolumn=yes

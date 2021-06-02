@@ -26,17 +26,16 @@ call plug#begin('~/.vim/plugged')
 
 " -------------- Theme and appearance ----------
 Plug 'tknightz/ikolor.vim'
-" Plug 'vim-airline/vim-airline'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+" Plug 'itchyny/lightline.vim'
+" Plug 'mengelbrecht/lightline-bufferline'
+Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'sheerun/vim-polyglot'
 
 
 " -------------- Productivity -----------------
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'voldikss/vim-floaterm'
+" "Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vim-which-key'
 Plug 'haya14busa/is.vim'
 Plug 'vimlab/split-term.vim'
@@ -52,9 +51,9 @@ Plug 'SirVer/ultisnips', { 'for': 'vue' }
 Plug 'honza/vim-snippets', { 'for': 'vue'}
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'tknightz/executor.vim'
-Plug 'chrisbra/csv.vim'
-Plug 'mechatroner/rainbow_csv'
+Plug 'tknightz/executor.vim', {'for': ['python', 'javascript', 'go']}
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
+Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
 
 
 
@@ -62,7 +61,7 @@ Plug 'mechatroner/rainbow_csv'
 Plug 'tveskag/nvim-blame-line'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-" Plug 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo'
 Plug 'tknightz/projectile.vim'
 
 
@@ -89,14 +88,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 
 " ---------------- SQL, DATABASE ----------------
-Plug 'tknightz/sqlupper.vim', {'for': 'sql'}
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'tknightz/sqlupper.vim', {'for': ['sql', 'mysql']}
+Plug 'tpope/vim-dadbod',
+Plug 'kristijanhusak/vim-dadbod-ui', {'on': 'DBUIToggle'}
 Plug 'tknightz/autobrackets.vim'
 
-
-" ---------------- SQL, DATABASE ----------------
-" Plug 'ervandew/supertab'
 
 
 " Initialize plugin system
