@@ -53,6 +53,7 @@ ln -s $PWD/.config/nvim/* ~/.config/nvim/
 ln -s $PWD/.config/alacritty/* ~/.config/alacritty/
 ln -s $PWD/.config/vifm/* ~/.config/vifm/
 ln -s $PWD/.vimrc ~/.vimrc
+ln -s $PWD/.gitconfig ~/.gitconfig
 
 vim -c 'PlugInstall' \
     -c 'qa'
