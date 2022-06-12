@@ -1,2 +1,0 @@
-this is a file to test vim-fugitive.
-

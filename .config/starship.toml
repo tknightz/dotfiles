@@ -1,0 +1,43 @@
+[directory]
+truncation_length = 8
+truncation_symbol = ".../"
+format = "at [$path]($style)[$read_only]($read_only_style) "
+style = "bold blue"
+read_only = "🔒"
+read_only_style = "red"
+home_symbol = "🏠 "
+
+[aws]
+format = "on [$symbol$profile]($style)"
+style = "bold blue"
+disabled = true
+
+[cmd_duration]
+format = "took ⏳ [$duration](bold yellow)"
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = " "
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+discharging_symbol = "💀 "
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+discharging_symbol = " "
+
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+
+[username]
+style_user = "cyan bold"
+style_root = "red bold"
+format = "🔥 [$user]($style) "
+disabled = false
+show_always = true
