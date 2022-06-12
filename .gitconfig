@@ -1,15 +1,19 @@
 [user]
 	email = hatuyen2699@gmail.com
 	name = tknightz
+
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
+
 [color]
 	ui = true
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+
 [color "diff"]
 	meta = 11
 	frag = magenta bold
@@ -17,15 +21,54 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
 [init]
 	defaultBranch = master
+
+[stash]
+  showStat = true
+  showPatch = true
+
+[filesystem "N/A|15.0.2|/dev/nvme0n1p7"]
+	timestampResolution = 4001 nanoseconds
+	minRacyThreshold = 5022 microseconds
+
 [merge]
   tool = vimdiff
+	conflictstyle = diff3
+
 [mergetool]
   prompt = true
+
 [mergetool "vimdiff"]
   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [difftool]
 	prompt = false
+
 [diff]
 	tool = vimdiff
+	colorMoved = default
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+	features = decorations
+	theme = base16
+
+[delta "interactive"]
+	keep-plus-minus-markers = false
+
+[delta "decorations"]
+	commit-decoration-style = blue ol
+	commit-style = raw
+	file-style = omit
+	hunk-header-decoration-style = blue box
+	hunk-header-file-style = red
+	hunk-header-line-number-style = "#067a00"
+	hunk-header-style = file line-number syntax
+[push]
+	default = current
