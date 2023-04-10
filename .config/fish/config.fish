@@ -1,35 +1,39 @@
 set -U fish_greeting
 
+# set -gx TERM "screen-256color"
+set -gx GOPATH $HOME/go
+fish_add_path $HOME/.config/vifm/scripts
+fish_add_path /usr/local/go/bin
+fish_add_path $HOME/go/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
+
 set -gx FZF_DEFAULT_COMMAND "rg --files --hidden -g '!{.git/*,node_modules/*}'"
-# alias rg "rg --hidden -g '!{.git/*,node_modules/*}'"
-set -gx BAT_THEME "base16"
-set -gx BROWSER brave
-set -gx EDITOR nvim
-
-
-# set -gx PATH $PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin/:$HOME/go/bin
-fish_add_path -g $HOME/go/bin $HOME/.gem/ruby/2.7.0/bin $HOME/.config/vifm/scripts $HOME/.local/bin
-
-
-set -gx FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS'
---color=dark
---color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
---color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
-'
+set -gx DELTA_PAGER "less -R"
 set -gx LESS ""
-set -gx DELTA_PAGER 'less -R'
-# set -gx LS_COLORS (vivid generate snazzy)
-
-set -gx GLFW_IM_MODULE ibus
-set -gx GTK_IM_MODULE ibus
-set -gx QT_IM_MODULE ibus
-set -gx XMODIFIERS @im=ibus
+set -gx BAT_THEME "base16"
+set -U BROWSER brave
+set -Ux EDITOR nvim
+set -Ux PROXY_DOCKER "http://172.17.0.1:3128"
 
 
-function __fish_default_command_not_found_handler --on-event fish_command_not_found
-  functions --erase __fish_command_not_found_setup
-  echo "'$argv' not found"
-end
+# set -gx HOST_IP (host (hostname) | grep -oP '(\s)\d+(\.\d+){3}' | tail -1 | awk '{ print $NF }' | tr -d '\r')
+set -Ux HOST_IP 10.116.224.53
+set -Ux DISPLAY $HOST_IP:0.0
+set -Ux PULSE_SERVER "tcp:$HOST_IP"
+set -U LD_LIBRARY_PATH "$LD_LIBRARY_PATH:/usr/local/lib"
+set -gx NO_AT_BRIDGE 1
+set -gx LIBGL_ALWAYS_INDIRECT 1
+set -gx CHOKIDAR_USEPOLLING 1
+set -g LS_COLORS (vivid generate snazzy)
 
+# set -gx NVM_DIR "$HOME/.nvm"
 
-starship init fish | source
+# keybindings
+bind \co edit_command_buffer
+bind \ck forward-char
+bind \ch backward-word
+bind \cl forward-word
+bind \cu kill-whole-line
+
+# starship init fish | source
