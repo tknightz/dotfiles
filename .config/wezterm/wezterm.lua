@@ -1,70 +1,94 @@
 local wezterm = require 'wezterm';
-local font_name = "Operator Mono for Powerline"
+local fontname = "Operator Mono SSm Lig Medium";
 
+
+local scheme = wezterm.get_builtin_color_schemes()["Tinacious Design (Dark)"]
+scheme.cursor_bg = "#00afff"
+scheme.cursor_fg = "#000000"
+scheme.cursor_border = "#00afff"
 
 function convert_params(params)
   local weight_converter = {
     Regular = "Regular",
-    Book = "Medium",
+    DemiBold = "DemiBold",
     Medium = "Medium",
     Bold = "Bold",
+    ExtraBold = "ExtraBold",
   }
 
   return {
-    weight = weight_converter[params.weight],
-    italic = params.italic
+    weight = params.weight,
+    italic = params.italic,
+    assume_emoji_presentation = true,
   }
 end
 
-function font_with_fallback(name, params)
-  local names = {name, "IBM Plex Mono", "Symbols Nerd Font Mono"}
-  return wezterm.font_with_fallback(names, convert_params(params))
+
+-- A helper function for my fallback fonts
+function font_with_fallback(font, params)
+  local names = {
+    { family = font },
+    { family = "JetBrains Mono" },
+    { family = "Symbols Nerd Font Mono", scale = 0.8 },
+    { family = "FiraMono Nerd Font", scale = 0.8 }
+  }
+  return wezterm.font_with_fallback(names, params)
 end
 
 return {
-  font = wezterm.font_with_fallback({
-    {family=font_name, weight="Book"},
-  }),
-  font_size = 12.5,
-  line_height = 1.2,
-
+  font = font_with_fallback(fontname, { weight = "Medium" }),
   font_rules = {
     {
+      intensity = 'Bold',
       italic = false,
-      intensity = "Bold",
-      font = font_with_fallback(font_name, {weight="Medium", italic=false})
+      font = font_with_fallback(fontname, { weight = 'Bold' })
     },
     {
+      intensity = 'Bold',
       italic = true,
-      intensity = "Normal",
-      font = font_with_fallback(font_name, {weight="Book", italic=true})
+      font = font_with_fallback(fontname, { weight = "Bold", italic = true })
     },
     {
+      intensity = 'Normal',
       italic = true,
-      intensity = "Bold",
-      font = font_with_fallback(font_name, {weight="Medium", italic=true})
+      font = font_with_fallback(fontname, { weight = "DemiLight", italic = true })
+    },
+
+    {
+      intensity = 'Half',
+      italic = true,
+      font = font_with_fallback(fontname, {weight = 'Light', italic = true}),
     },
   },
 
-  
-  colors = {
-    cursor_bg = "#54FF71",
-    foreground = "#ada4c0",
-    background = "#121212",
-    cursor_border = "#bbbbbb",
-    cursor_fg = "#000000",
-    selection_bg = "#453b39",
-    selection_fg = "#b6bbc0",
-    ansi = {"#1b1d1e","#f92672","#a6e22e","#fd971f","#57c7ff","#9e6ffe","#5e7175","#ccccc6"},
-    brights = {"#505354","#ff669d","#beed5f","#e6db74","#66d9ef","#9e6ffe","#a3babf","#f8f8f2"}
+  keys = {
+    {key="Backspace", mods="CTRL", action=wezterm.action{SendKey={key="w", mods="CTRL"}}},
   },
-  cursor = "bar",
 
-  -- Window config
-  initial_cols = 150,
-  initial_rows = 38,
 
+
+  -- debug_key_events = true,
+
+  font_size = 11.3,
+  line_height = 1.45,
+  color_schemes = {
+    ["Tinacious Design (Dark)"] = scheme,
+  },
+  color_scheme = "Tinacious Design (Dark)",
+  use_fancy_tab_bar = false,
   enable_tab_bar = false,
+
+  background = {
+    {
+      source = {
+        File = "./backgroundimgs/bg_21.jpg",
+      },
+      hsb = {
+        brightness = 0.025,
+      },
+      vertical_align = "Middle",
+    }
+  },
 
   window_padding = {
     left = 0,
@@ -72,21 +96,28 @@ return {
     top = 0,
     bottom = 0,
   },
+  window_background_opacity = 1.0,
+  default_cursor_style = "BlinkingBar",
+  initial_rows = 24,
+  initial_cols = 150,
 
-  window_background_image = "/home/tknightz/Pictures/uchiha-bg.jpg",
-
-  window_background_image_hsb = {
-    -- Darken the background image by reducing it to 1/3rd
-      brightness = 0.2,
-
-    -- You can adjust the hue by scaling its value.
-      -- a multiplier of 1.0 leaves the value unchanged.
-      hue = 1.0,
-
-    -- You can adjust the saturation also.
-      saturation = 1.0,
-  },
-
-  -- Input keyboard
-  use_ime = true,
+  -- force_reverse_video_cursor = true,
+  -- colors = {
+  --   foreground = "#dcd7ba",
+  --   background = "#1f1f28",
+  --
+  --   cursor_bg = "#c8c093",
+  --   cursor_fg = "#c8c093",
+  --   cursor_border = "#c8c093",
+  --
+  --   selection_fg = "#c8c093",
+  --   selection_bg = "#2d4f67",
+  --
+  --   scrollbar_thumb = "#16161d",
+  --   split = "#16161d",
+  --
+  --   ansi = { "#090618", "#c34043", "#76946a", "#c0a36e", "#7e9cd8", "#957fb8", "#6a9589", "#c8c093" },
+  --   brights = { "#727169", "#e82424", "#98bb6c", "#e6c384", "#7fb4ca", "#938aa9", "#7aa89f", "#dcd7ba" },
+  --   indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
+  -- },
 }
