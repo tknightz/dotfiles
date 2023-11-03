@@ -1,3 +1,6 @@
+# right format
+right_format = """$time"""
+
 [directory]
 truncation_length = 8
 truncation_symbol = ".../"
@@ -41,3 +44,9 @@ style_root = "red bold"
 format = "🔥 [$user]($style) "
 disabled = false
 show_always = true
+
+[time]
+disabled = false
+format = '🕙[ $time ]($style) '
+time_format = '%T'
+utc_time_offset = '+7'

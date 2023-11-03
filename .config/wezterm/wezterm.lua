@@ -1,11 +1,8 @@
 local wezterm = require 'wezterm';
-local fontname = "Operator Mono SSm Lig Medium";
-
-
-local scheme = wezterm.get_builtin_color_schemes()["Tinacious Design (Dark)"]
-scheme.cursor_bg = "#00afff"
-scheme.cursor_fg = "#000000"
-scheme.cursor_border = "#00afff"
+-- local fontname = "Operator Mono for Powerline";
+local fontname = "JetBrains Mono";
+-- local fontname = "Ligalex Mono";
+local gpus = wezterm.gui.enumerate_gpus();
 
 function convert_params(params)
   local weight_converter = {
@@ -29,63 +26,101 @@ function font_with_fallback(font, params)
   local names = {
     { family = font },
     { family = "JetBrains Mono" },
-    { family = "Symbols Nerd Font Mono", scale = 0.8 },
-    { family = "FiraMono Nerd Font", scale = 0.8 }
+    { family = "Symbols Nerd Font Mono", scale = 0.85 },
+    { family = "FiraMono Nerd Font", scale = 0.85 }
   }
   return wezterm.font_with_fallback(names, params)
 end
 
 return {
   font = font_with_fallback(fontname, { weight = "Medium" }),
-  font_rules = {
-    {
-      intensity = 'Bold',
-      italic = false,
-      font = font_with_fallback(fontname, { weight = 'Bold' })
-    },
-    {
-      intensity = 'Bold',
-      italic = true,
-      font = font_with_fallback(fontname, { weight = "Bold", italic = true })
-    },
-    {
-      intensity = 'Normal',
-      italic = true,
-      font = font_with_fallback(fontname, { weight = "DemiLight", italic = true })
-    },
+  underline_position = -3.5,
+  -- font_rules = {
+  --   {
+  --     intensity = 'Bold',
+  --     italic = false,
+  --     font = font_with_fallback(fontname, { weight = 'Medium' })
+  --   },
+  --   {
+  --     intensity = 'Bold',
+  --     italic = true,
+  --     font = font_with_fallback(fontname, { weight = "Medium", italic = true })
+  --   },
+  --   {
+  --     intensity = 'Normal',
+  --     italic = true,
+  --     font = font_with_fallback(fontname, { weight = "Light", italic = true })
+  --   },
+  --
+  --   {
+  --     intensity = 'Half',
+  --     italic = true,
+  --     font = font_with_fallback(fontname, {weight = "Light", italic = true}),
+  --   },
+  -- },
 
-    {
-      intensity = 'Half',
-      italic = true,
-      font = font_with_fallback(fontname, {weight = 'Light', italic = true}),
-    },
+  force_reverse_video_cursor = true,
+  color_scheme = "Tinacious Design (Dark)",
+  colors = {
+    cursor_bg = "#54FF71",
+    foreground = "#ada4c0",
+    background = "#121212",
+    cursor_border = "#bbbbbb",
+    cursor_fg = "#000000",
+    selection_bg = "#453b39",
+    selection_fg = "#b6bbc0",
+    -- ansi = {"#1b1d1e","#f92672","#a6e22e","#fd971f","#57c7ff","#9e6ffe","#5e7175","#ccccc6"},
+    -- brights = {"#505354","#ff669d","#beed5f","#e6db74","#66d9ef","#9e6ffe","#a3babf","#f8f8f2"},
+    ansi = {"#33333f", "#ff568e", "#64de83", "#efff73", "#73a9ff", "#946ff7", "#62c6da", "#dedeff"},
+    brights = {"#43435a", "#ff69a2", "#73de8a", "#f3ff85", "#85b6ff", "#a481f7", "#71c2d9", "#ebebff"},
   },
 
   keys = {
     {key="Backspace", mods="CTRL", action=wezterm.action{SendKey={key="w", mods="CTRL"}}},
+    {key="/", mods="CTRL", action=wezterm.action{SendKey={key="_", mods="CTRL"}}},
   },
 
 
 
   -- debug_key_events = true,
 
-  font_size = 11.3,
-  line_height = 1.45,
-  color_schemes = {
-    ["Tinacious Design (Dark)"] = scheme,
-  },
-  color_scheme = "Tinacious Design (Dark)",
+  -- font_size = 11.3,
+  -- font_size = 10.4,
+  font_size = 9.3,
+  font_rasterizer = "FreeType",
+  bold_brightens_ansi_colors = true,
+  -- line_height = 1.6,
+  line_height = 1.54,
+  -- foreground_text_hsb = {
+  --   hue = 1.0,
+  --   saturation = 1.0,
+  --   brightness = 0.7,  -- default is 1.0
+  -- },
+
+  -- freetype_load_target = "HorizontalLcd",
+  -- color_schemes = {
+  --   ["Tinacious Design (Dark)"] = scheme,
+  -- },
   use_fancy_tab_bar = false,
   enable_tab_bar = false,
 
   background = {
     {
       source = {
-        File = "./backgroundimgs/bg_21.jpg",
+        Color = '#101017',
       },
-      hsb = {
-        brightness = 0.025,
+      height = '100%',
+      width = '100%',
+    },
+    {
+      source = {
+        File = "/home/tknightz/Downloads/Pictures/bg_21.png",
       },
+      -- hsb = {
+      --   brightness = 0.05,
+      --   saturation = 0.8,
+      -- },
+      opacity = 0.035,
       vertical_align = "Middle",
     }
   },
@@ -96,28 +131,13 @@ return {
     top = 0,
     bottom = 0,
   },
-  window_background_opacity = 1.0,
+  -- window_background_opacity = 1.0,
   default_cursor_style = "BlinkingBar",
-  initial_rows = 24,
-  initial_cols = 150,
+  initial_rows = 23,
+  initial_cols = 140,
 
-  -- force_reverse_video_cursor = true,
-  -- colors = {
-  --   foreground = "#dcd7ba",
-  --   background = "#1f1f28",
-  --
-  --   cursor_bg = "#c8c093",
-  --   cursor_fg = "#c8c093",
-  --   cursor_border = "#c8c093",
-  --
-  --   selection_fg = "#c8c093",
-  --   selection_bg = "#2d4f67",
-  --
-  --   scrollbar_thumb = "#16161d",
-  --   split = "#16161d",
-  --
-  --   ansi = { "#090618", "#c34043", "#76946a", "#c0a36e", "#7e9cd8", "#957fb8", "#6a9589", "#c8c093" },
-  --   brights = { "#727169", "#e82424", "#98bb6c", "#e6c384", "#7fb4ca", "#938aa9", "#7aa89f", "#dcd7ba" },
-  --   indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
-  -- },
+  audible_bell = "Disabled",
+
+  front_end = "WebGpu",
+  webgpu_preferred_adapter = gpus[2],
 }
