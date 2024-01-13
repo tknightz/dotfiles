@@ -1,65 +1,70 @@
 local wezterm = require 'wezterm';
--- local fontname = "Operator Mono for Powerline";
-local fontname = "JetBrains Mono";
--- local fontname = "Ligalex Mono";
+local fontname = "Operator Mono"
+-- local fontname = "JetBrains Mono";
 local gpus = wezterm.gui.enumerate_gpus();
 
-function convert_params(params)
-  local weight_converter = {
-    Regular = "Regular",
-    DemiBold = "DemiBold",
-    Medium = "Medium",
-    Bold = "Bold",
-    ExtraBold = "ExtraBold",
+
+local weight_maps = {
+  normal = 325,
+  bold = "DemiLight",
+}
+
+--  ╭──────────────────────────────────────────────────────────╮
+--  │         A helper function for my fallback fonts          │
+--  ╰──────────────────────────────────────────────────────────╯
+function _font_with_fallback(font, params)
+  local names = {
+    { family = font, weight = params.weight, italic = params.italic },
+    { family = "IBM Plex Mono", weight = params.intensity, italic = params.italic },
+    { family = "Symbols Nerd Font Mono", scale = 0.8, weight = "Regular" },
+    { family = "Noto Color Emoji", weight = "Regular" }
+  }
+  return wezterm.font_with_fallback(names)
+end
+
+function _font_config(fontname, weight_maps)
+  local font = _font_with_fallback(fontname, { weight = weight_maps.normal })
+  local rules = {
+    {
+      intensity = 'Bold',
+      italic = false,
+      font = _font_with_fallback(fontname, { weight = weight_maps.bold, intensity = 'Bold' })
+    },
+    {
+      intensity = 'Bold',
+      italic = true,
+      font = _font_with_fallback(fontname, { weight = weight_maps.bold, italic = true, intensity = 'Bold' })
+    },
+    {
+      intensity = 'Normal',
+      italic = true,
+      font = _font_with_fallback(fontname, { weight = weight_maps.normal, italic = true, intensity = 'Regular' })
+    },
   }
 
   return {
-    weight = params.weight,
-    italic = params.italic,
-    assume_emoji_presentation = true,
+    font = font,
+    rules = rules,
   }
 end
 
+local font_configs = _font_config(fontname, weight_maps)
 
--- A helper function for my fallback fonts
-function font_with_fallback(font, params)
-  local names = {
-    { family = font },
-    { family = "JetBrains Mono" },
-    { family = "Symbols Nerd Font Mono", scale = 0.85 },
-    { family = "FiraMono Nerd Font", scale = 0.85 }
-  }
-  return wezterm.font_with_fallback(names, params)
-end
-
+--  ╭──────────────────────────────────────────────────────────╮
+--  │                       Config sets                        │
+--  ╰──────────────────────────────────────────────────────────╯
 return {
-  font = font_with_fallback(fontname, { weight = "Medium" }),
-  underline_position = -3.5,
-  -- font_rules = {
-  --   {
-  --     intensity = 'Bold',
-  --     italic = false,
-  --     font = font_with_fallback(fontname, { weight = 'Medium' })
-  --   },
-  --   {
-  --     intensity = 'Bold',
-  --     italic = true,
-  --     font = font_with_fallback(fontname, { weight = "Medium", italic = true })
-  --   },
-  --   {
-  --     intensity = 'Normal',
-  --     italic = true,
-  --     font = font_with_fallback(fontname, { weight = "Light", italic = true })
-  --   },
-  --
-  --   {
-  --     intensity = 'Half',
-  --     italic = true,
-  --     font = font_with_fallback(fontname, {weight = "Light", italic = true}),
-  --   },
-  -- },
+  font = font_configs.font,
+  font_rules = font_configs.rules,
+  -- font_size = 9.35,
+  font_size = 10.2,
 
-  force_reverse_video_cursor = true,
+  underline_position = -6,
+  warn_about_missing_glyphs = false,
+  custom_block_glyphs = true,
+
+  -- colors
+  bold_brightens_ansi_colors = true,
   color_scheme = "Tinacious Design (Dark)",
   colors = {
     cursor_bg = "#54FF71",
@@ -75,69 +80,58 @@ return {
     brights = {"#43435a", "#ff69a2", "#73de8a", "#f3ff85", "#85b6ff", "#a481f7", "#71c2d9", "#ebebff"},
   },
 
+  -- typing engine
+  use_ime = true,
+  xim_im_name = 'ibus',
+
+  -- key mappings
   keys = {
     {key="Backspace", mods="CTRL", action=wezterm.action{SendKey={key="w", mods="CTRL"}}},
     {key="/", mods="CTRL", action=wezterm.action{SendKey={key="_", mods="CTRL"}}},
   },
 
 
+  line_height = 1.57,
 
-  -- debug_key_events = true,
-
-  -- font_size = 11.3,
-  -- font_size = 10.4,
-  font_size = 9.3,
-  font_rasterizer = "FreeType",
-  bold_brightens_ansi_colors = true,
-  -- line_height = 1.6,
-  line_height = 1.54,
-  -- foreground_text_hsb = {
-  --   hue = 1.0,
-  --   saturation = 1.0,
-  --   brightness = 0.7,  -- default is 1.0
-  -- },
-
-  -- freetype_load_target = "HorizontalLcd",
-  -- color_schemes = {
-  --   ["Tinacious Design (Dark)"] = scheme,
-  -- },
-  use_fancy_tab_bar = false,
-  enable_tab_bar = false,
-
+  -- background image
   background = {
     {
       source = {
         Color = '#101017',
       },
-      height = '100%',
-      width = '100%',
+      height = "120%",
+      width = "120%",
+      horizontal_align = "Center",
+      vertical_align = "Middle",
     },
     {
       source = {
         File = "/home/tknightz/Downloads/Pictures/bg_21.png",
       },
-      -- hsb = {
-      --   brightness = 0.05,
-      --   saturation = 0.8,
-      -- },
-      opacity = 0.035,
+      opacity = 0.03,
       vertical_align = "Middle",
     }
   },
 
+  -- sizes
   window_padding = {
     left = 0,
     right = 0,
     top = 0,
     bottom = 0,
   },
-  -- window_background_opacity = 1.0,
-  default_cursor_style = "BlinkingBar",
   initial_rows = 23,
   initial_cols = 140,
 
+
+  -- misc
+  default_cursor_style = "BlinkingBar",
+  force_reverse_video_cursor = true,
   audible_bell = "Disabled",
+  use_fancy_tab_bar = false,
+  enable_tab_bar = false,
 
   front_end = "WebGpu",
-  webgpu_preferred_adapter = gpus[2],
+  webgpu_preferred_adapter = gpus[1],
+  webgpu_power_preference = "HighPerformance",
 }

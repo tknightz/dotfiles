@@ -9,6 +9,7 @@ set -gx BAT_THEME "base16"
 set -gx BROWSER brave
 set -gx EDITOR nvim
 set -Ux PYENV_ROOT $HOME/.pyenv
+set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
 
 set -gx LESS ""
 set -gx DELTA_PAGER 'less -R'
@@ -17,7 +18,8 @@ set -gx LIBVA_DRIVER_NAME 'iHD'
 
 
 # set -gx PATH $PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin/:$HOME/go/bin
-fish_add_path -g $HOME/go/bin $HOME/.gem/ruby/2.7.0/bin $HOME/.config/vifm/scripts $HOME/.local/bin $PYENV_ROOT/bin
+fish_add_path -g $HOME/go/bin $HOME/.gem/ruby/2.7.0/bin $HOME/.config/vifm/scripts $HOME/.local/bin $PYENV_ROOT/bin $HOME/.cargo/bin
+# fish_add_path $HOME/.local/share/bob/nvim-bin
 
 
 
@@ -26,9 +28,10 @@ fish_add_path -g $HOME/go/bin $HOME/.gem/ruby/2.7.0/bin $HOME/.config/vifm/scrip
 # ╰──────────────────────────────────────────────────────────╯
 bind \co edit_command_buffer
 bind \ck forward-char
+bind \ck accept-autosuggestion
 bind \ch backward-word
-bind \cl forward-word
 bind \cu kill-whole-line
+# bind \cl forward-word
 
 
 

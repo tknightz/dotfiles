@@ -3,6 +3,7 @@ alias folder="explorer.exe"
 alias ls="lsd"
 # alias less="less -R"
 
+alias e="nvim"
 alias copy="xclip -selection clipboard"
 
 # short for git
@@ -59,4 +60,14 @@ function ghelp
   gcp="git cherry-pick"
   gwt="git worktree"
   '
+end
+
+function nvim
+  set file (echo $argv[1] | cut -d: -f1)
+  set line (echo $argv[1] | cut -d: -f2)
+  if [ $line != "" ]
+    command nvim +"$line" "$file"
+  else
+    command nvim
+  end
 end

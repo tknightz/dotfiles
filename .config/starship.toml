@@ -11,9 +11,9 @@ read_only_style = "red"
 home_symbol = "🏠 "
 
 [aws]
-format = "on [$symbol$profile]($style)"
+format = 'on [[$symbol](bold yellow)($profile )(\[$region\] )]($style)'
 style = "bold blue"
-disabled = true
+symbol = ' '
 
 [cmd_duration]
 format = "took ⏳ [$duration](bold yellow)"
@@ -50,3 +50,6 @@ disabled = false
 format = '🕙[ $time ]($style) '
 time_format = '%T'
 utc_time_offset = '+7'
+
+[git_metrics]
+disabled = false
