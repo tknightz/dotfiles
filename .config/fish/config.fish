@@ -8,18 +8,21 @@ set -gx XDG_CURRENT_DESKTOP "KDE"
 set -gx BAT_THEME "base16"
 set -gx BROWSER brave
 set -gx EDITOR nvim
+set -gx SUDO_EDITOR nvim
 set -Ux PYENV_ROOT $HOME/.pyenv
 set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
 
-set -gx LESS ""
+set -gx LESS "-R"
 set -gx DELTA_PAGER 'less -R'
 set -gx LS_COLORS (vivid generate snazzy)
 set -gx LIBVA_DRIVER_NAME 'iHD'
+# set -gx ELECTRON_RUN_AS_NODE 1
 
 
+set --export ANDROID_HOME $HOME/Android/Sdk
 # set -gx PATH $PATH:$HOME/.config/vifm/scripts/:$HOME/.gem/ruby/2.7.0/bin/:$HOME/go/bin
 fish_add_path -g $HOME/go/bin $HOME/.gem/ruby/2.7.0/bin $HOME/.config/vifm/scripts $HOME/.local/bin $PYENV_ROOT/bin $HOME/.cargo/bin
-# fish_add_path $HOME/.local/share/bob/nvim-bin
+fish_add_path $HOME/.local/share/bob/nvim-bin $HOME/.local/share/nvim/mason/bin $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 
 
 
@@ -51,5 +54,9 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 
-pyenv init - | source
 starship init fish | source
+pyenv init - | source
+envsource "$HOME/.env"
+
+# opencode
+fish_add_path /home/tknightz/.opencode/bin

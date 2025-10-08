@@ -62,12 +62,4 @@ function ghelp
   '
 end
 
-function nvim
-  set file (echo $argv[1] | cut -d: -f1)
-  set line (echo $argv[1] | cut -d: -f2)
-  if [ $line != "" ]
-    command nvim +"$line" "$file"
-  else
-    command nvim
-  end
-end
+alias ai="mods"
