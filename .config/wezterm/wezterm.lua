@@ -164,7 +164,6 @@ return {
 	-- Pass the GPU object directly if found, otherwise it will be nil and WezTerm will pick
 	-- its default (usually the first available).
 	webgpu_preferred_adapter = preferred_gpu_adapter,
-	-- webgpu_preferred_adapter = gpus[1],
 	webgpu_power_preference = "HighPerformance",
 	-- animation_fps = 120,
 	-- max_fps = 120, -- Adjust this to match your monitor's refresh rate if higher for smoother feel,

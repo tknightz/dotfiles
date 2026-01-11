@@ -3,6 +3,8 @@ alias folder="explorer.exe"
 alias ls="lsd"
 # alias less="less -R"
 
+alias toggle-vpn="sudo /usr/local/bin/vpn-toggle"
+
 alias e="nvim"
 alias copy="xclip -selection clipboard"
 

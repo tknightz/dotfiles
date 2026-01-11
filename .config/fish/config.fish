@@ -57,6 +57,9 @@ set --export PATH $BUN_INSTALL/bin $PATH
 starship init fish | source
 pyenv init - | source
 envsource "$HOME/.env"
+# set -Ux SDKMAN_DIR "$HOME/.sdkman"
+# set SDKMAN_PLATFORM "$HOME/.sdkman/var/platform"
+set -g __sdkman_custom_dir $HOME/.sdkman
 
 # opencode
 fish_add_path /home/tknightz/.opencode/bin

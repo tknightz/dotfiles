@@ -1,0 +1,45 @@
+background = 11151D
+theme = "Monokai Pro Spectrum"
+
+font-family = "Monaspace Neon Frozen"
+font-family-bold = "Monaspace Neon Frozen"
+font-family-italic = "Cartograph CF"
+font-family-bold-italic = "Cartograph CF"
+
+font-synthetic-style = true
+font-style = Medium
+font-style-bold = SemiBold
+font-style-italic = Semi Bold Italic
+font-style-bold-italic = Bold Italic
+font-size = 10.5
+freetype-load-flags = false
+
+# adjust
+adjust-cell-height = 30%
+adjust-cell-width = -10%
+
+adjust-underline-position = 3
+adjust-underline-thickness = 1
+
+# turn off gtk-titlebar
+bold-is-bright = true
+cursor-style = block
+cursor-color = cell-foreground
+cursor-text = cell-background
+gtk-titlebar = false
+window-decoration = server
+window-width = 144
+window-height = 24
+
+# background-opacity = 0.8
+# background-blur = true
+
+background-image = "~/Pictures/collection/terminal-bg.png"
+background-image-fit = cover
+
+# keybind = ctrl+backspace=text:\x1b\x7f
+keybind = ctrl+backspace=text:\x17
+
+# custom-shader = shaders/boom.glsl
+# custom-shader = shaders/cursor_blaze_tapered.glsl
+# custom-shader = shaders/trail.glsl
